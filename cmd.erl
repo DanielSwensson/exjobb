@@ -7,20 +7,17 @@ os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml
 % io:format("~p",[ParsResult]),
 F = binary_to_list(Binary),
 Results = extract(F,dict:new()),
-io:format("~p", [dict:to_list(Results)]).
+ResultsList = dict:to_list(Results),
+R = io_lib:format("~p",[ResultsList]),
+R1 = lists:flatten(R),
+file:write_file("results", R1 ).
 
 
-% erlang:display(F).
-% R = io_lib:format("~p",[ParsResult]),
-% R1 = lists:flatten(R),
-% ok = file:write_file("parsed",list_to_binary(R1)).
-
-source() -> $s,$o,$u,$r,$c,$e,$=,$";
 
 
 extract([],Results) -> Results;
 
-extract([source()|T],Results)  ->
+extract([$s,$o,$u,$r,$c,$e,$=,$"|T],Results)  ->
      {T1, Result} = getSource(T,[]), 
       Results1 = 
         case dict:is_key(Result,Results) of 
