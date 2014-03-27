@@ -1,13 +1,16 @@
 -module(cmd).
 -export([run/0]).
 
-run() -> 
-os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml -r oop/src/*.java -o test.xml -f xml"),
-{ok,Binary}=file:read_file("test.xml"),
-% io:format("~p",[ParsResult]),
-F = binary_to_list(Binary),
-Results = extract(F,dict:new()),
-io:format("~p", [dict:to_list(Results)]).
+run() ->
+	Res = os:cmd("java -jar D:/checkstyle/checkstyle-5.7-all.jar -c D:/checkstyle/sun_checks.xml -r oop/src/*.java -f xml"),
+	%Results = extract(Res,dict:new()),
+	Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.checks\.(?<ERR>.+)\"",
+	{match,Results} = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
+	Result = reg(Results,dict:new()),
+	io:format("~p~n",[dict:to_list(Result)]).
+	%io:format("~p~n",[Results]).
+	
+	%io:format("~p", [dict:to_list(Results)]).
 
 
 % erlang:display(F).
@@ -15,12 +18,19 @@ io:format("~p", [dict:to_list(Results)]).
 % R1 = lists:flatten(R),
 % ok = file:write_file("parsed",list_to_binary(R1)).
 
-source() -> $s,$o,$u,$r,$c,$e,$=,$";
+reg([],Res) -> Res;
+reg([[H]|T],Res) -> 
+	case dict:is_key(H,Res) of
+		true ->
+			reg(T,dict:update(H,fun(Val) -> Val+1 end, Res));
+		false ->
+			reg(T,dict:store(H,1,Res))
+	end.
 
 
 extract([],Results) -> Results;
 
-extract([source()|T],Results)  ->
+extract([ $s,$o,$u,$r,$c,$e,$=,$"|T],Results)  ->
      {T1, Result} = getSource(T,[]), 
       Results1 = 
         case dict:is_key(Result,Results) of 
