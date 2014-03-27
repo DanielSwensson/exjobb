@@ -1,5 +1,5 @@
 -module(cmd).
--export([run/1,start/1]).
+-export([start/1]).
 
 start(Dir) ->
   io:format("Starting ~n"),
@@ -52,36 +52,48 @@ merge([{Result, Freq}| T],Results) ->
 
 run(File) -> 
 
-io:format("Running CheckStyle on ~p ~n",[self()]),
-XML = os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml -r " ++ File ++  " -f xml"),
-io:format("CheckStyle completed ~n"),
-io:format("Analyzing results ~n"),
-extract(XML,dict:new()).
+  io:format("Running CheckStyle on ~p ~n",[self()]),
+  Res = os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml -r " ++ File ++  " -f xml"),
+  io:format("CheckStyle completed ~n"),
+  analyze(Res).
+
+analyze(Res) ->
+  io:format("Analyzing results ~n"),
+  Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.checks\.(?<ERR>.+)\"",
+  {match,Results} = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
+  reg(Results,dict:new()).
+
+reg([],Res) -> Res;
+reg([[H]|T],Res) -> 
+  case dict:is_key(H,Res) of
+    true ->
+      reg(T,dict:update(H,fun(Val) -> Val+1 end, Res));
+    false ->
+      reg(T,dict:store(H,1,Res))
+  end.
 
 
 
+% extract([],Results) -> Results;
 
+% extract([$s,$o,$u,$r,$c,$e,$=,$"|T],Results)  ->
+%      {T1, Result} = getSource(T,[]), 
+%       Results1 = 
+%         case dict:is_key(Result,Results) of 
+%         true ->
+%           dict:update(Result,fun(Val) -> Val + 1 end, Results);
+%        false ->
+%           dict:store(Result,1,Results)
+%         end,
+%      extract(T1,Results1);
+% extract([_H|T],Results) ->
+%   extract(T,Results).
 
-extract([],Results) -> Results;
+% getSource([$"|T],R) ->
+%   {T,R};
 
-extract([$s,$o,$u,$r,$c,$e,$=,$"|T],Results)  ->
-     {T1, Result} = getSource(T,[]), 
-      Results1 = 
-        case dict:is_key(Result,Results) of 
-        true ->
-          dict:update(Result,fun(Val) -> Val + 1 end, Results);
-       false ->
-          dict:store(Result,1,Results)
-        end,
-     extract(T1,Results1);
-extract([_H|T],Results) ->
-  extract(T,Results).
-
-getSource([$"|T],R) ->
-  {T,R};
-
-getSource([H|T],R) ->
-  R1 = R ++ [H],
-  getSource(T,R1).
+% getSource([H|T],R) ->
+%   R1 = R ++ [H],
+%   getSource(T,R1).
 
 
