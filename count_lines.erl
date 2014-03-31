@@ -1,6 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Counts total number of uncommented java code lines in the given directory%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -module(count_lines).
 -export([count/1]).
-
 
 count(Dir) ->
   {ok, Filenames} = file:list_dir(Dir),
