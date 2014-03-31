@@ -1,18 +1,19 @@
-[{"whitespace.FileTabCharacterCheck",5},
- {"javadoc.JavadocVariableCheck",11},
- {"imports.UnusedImportsCheck",2},
- {"FinalParametersCheck",10},
- {"sizes.LineLengthCheck",38},
- {"naming.TypeNameCheck",1},
- {"javadoc.JavadocTypeCheck",5},
- {"blocks.NeedBracesCheck",3},
- {"coding.HiddenFieldCheck",4},
- {"design.HideUtilityClassConstructorCheck",1},
- {"whitespace.WhitespaceAfterCheck",3},
- {"javadoc.JavadocMethodCheck",18},
- {"coding.MagicNumberCheck",34},
- {"blocks.RightCurlyCheck",1},
- {"whitespace.WhitespaceAroundCheck",33},
- {"regexp.RegexpSinglelineCheck",52},
- {"design.DesignForExtensionCheck",12},
- {"javadoc.JavadocPackageCheck",5}]
+<h1>276</h1>
+<ul>
+<li>design.VisibilityModifierCheck | 3</li>
+<li>whitespace.FileTabCharacterCheck | 5</li>
+<li>sizes.LineLengthCheck | 16</li>
+<li>FinalParametersCheck | 15</li>
+<li>blocks.NeedBracesCheck | 9</li>
+<li>naming.ParameterNameCheck | 5</li>
+<li>naming.MethodNameCheck | 5</li>
+<li>whitespace.WhitespaceAfterCheck | 2</li>
+<li>imports.AvoidStarImportCheck | 2</li>
+<li>coding.MagicNumberCheck | 7</li>
+<li>blocks.RightCurlyCheck | 4</li>
+<li>whitespace.WhitespaceAroundCheck | 123</li>
+<li>design.DesignForExtensionCheck | 7</li>
+<li>regexp.RegexpSinglelineCheck | 54</li>
+<li>NewlineAtEndOfFileCheck | 1</li>
+<li>naming.LocalVariableNameCheck | 3</li>
+</ul>
