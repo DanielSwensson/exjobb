@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Runs checkstyle on all files in given directory.                        % 
-%All uncommented lines are counted and results are saved to result.html  %
+%All uncommented lines are counted and results are saved to results.html %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -module(checkstyle).
 -export([run/1]).
@@ -14,7 +14,7 @@ run(Dir) ->
   Checkstyle = os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml -r " ++ Dir ++ "*.java" ++  " -f xml"),
   io:format("CheckStyle completed ~n"),
   io:format("Counting results ~n"),
-  Results = count(Checkstyle),
+  Results = regex(Checkstyle),
   io:format("Analyzing results ~n"),
   Results1 = analyze(Results,dict:new()),
   NrLines =
@@ -23,7 +23,7 @@ run(Dir) ->
   end,
   save:save_to_file({Results1,NrLines},"results.html").
 
-count(Res) ->
+regex(Res) ->
   Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.checks\.(?<ERR>.+)\"",
   {match,Results} = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
   Results.
