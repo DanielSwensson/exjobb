@@ -3,7 +3,11 @@
 %All uncommented lines are counted and results are saved to results.html %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -module(checkstyle).
--export([run/1]).
+-export([run/1,test/0]).
+
+test() ->
+  run("./sources/"),
+  init:stop().
 
 
 

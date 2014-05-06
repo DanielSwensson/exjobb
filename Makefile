@@ -10,6 +10,9 @@ ERL = erl -boot start_clean
 build: beams
 
 
+test: beams 
+	${ERL} -pa / -s checkstyle test
+
 clean: 
 	rm -rf *.beam *.html *.dump
 
