@@ -21,19 +21,6 @@ write_result_per_student([Result | Results],IO) ->
   file:write(IO, "</ul>\n"),
   write_result_per_student(Results,IO).
 
-
-% save_to_file({Results,NrLines},FileName) ->
-%   ResultsList = dict:to_list(Results),
-%   % R = io_lib:format("~p",[ResultsList]),
-%   % R1 = lists:flatten(R),
-%   {ok, IO} = file:open(FileName,[write,raw]),
-%   file:write(IO, "<h1> Results </h1>\n"),
-%   file:write(IO, "<b> Lines of code: " ++ integer_to_list(NrLines) ++ "</b>\n"),
-%   file:write(IO, "<ul>\n"),
-%   write_list(ResultsList, IO),
-%   file:write(IO, "</ul>\n"),
-
-
 write_list([], _IO) ->
   ok;
 write_list([{ErrorType, Freq}| T], IO) ->
