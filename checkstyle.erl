@@ -6,15 +6,14 @@
 -export([run/1,test/0]).
 
 test() ->
-  run("./sources/"),
-  init:stop().
+  run("./sources/").
 
 
 
 run(Dir) -> 
   {ok, Count, Results} = run_per_dir(Dir),
+  analyze:get_stddiv(Results,Count),
   save:save_to_file(Results,Count, "results.html").
-  % io:format("Count: ~p ~n ~p ~n", [Count,Res]).
 
 
 run_per_dir(Dir) ->
@@ -39,29 +38,14 @@ run_checkstyle(DirName,Path) ->
   io:format("Running Checkstyle at ~p ~n", [Path]),
   Checkstyle = os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml -r " ++ Path ++ "/*.java" ++  " -f xml"),
   io:format("CheckStyle on ~p completed ~n", [Path]),
-  io:format("Counting results ~n"),
-  Results = regex(Checkstyle),
   io:format("Analyzing results on ~p ~n", [Path]),
-  Results1 = analyze(Results,dict:new()),
-  [{Results1, NrLines, DirName}].
+  Results = analyze:get_error_frequency(Checkstyle),
+  [{Results, NrLines, DirName}].
 
 
 
 
-regex(Res) ->
-  Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.checks\.(?<ERR>.+)\"",
-  {match,Results} = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
-  Results.
 
-
-analyze([],Res) -> Res;
-analyze([[H]|T],Res) -> 
-  case dict:is_key(H,Res) of
-    true ->
-      analyze(T,dict:update(H,fun(Val) -> Val+1 end, Res));
-    false ->
-      analyze(T,dict:store(H,1,Res))
-  end.
 
 
 
