@@ -40,7 +40,7 @@ run_checkstyle(DirName,Path) ->
   io:format("Analyzing results on ~p ~n", [Path]),
   Results1 = analyze(Results,dict:new()),
   [{Results1, NrLines, DirName}].
-  % save:save_to_file({Results1,NrLines},DirName ++ ".html").
+
 
 
 
