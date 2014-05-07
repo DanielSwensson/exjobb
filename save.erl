@@ -37,5 +37,5 @@ write_list([{ErrorType, Freq}| T], IO) ->
 write_stddiv([],_) -> ok;
 write_stddiv([{Type, AverageList} | Averages],IO) ->
   {MedelVarde, Avvikelse} = stddiv:run(AverageList),
-  file:write(IO, "<li><h4>" ++ [Type] ++ "</h4><br>Avvikelse: " ++ io_lib:format("~.7f",[Avvikelse]) ++ "<br>" ++ " Medelvärde: " ++ io_lib:format("~.7f",[MedelVarde]) ++  "</li>\n"),
+  file:write(IO, "<li><h4>" ++ [Type] ++ "</h4>Avvikelse: " ++ io_lib:format("~.7f",[Avvikelse]) ++ "<br>" ++ " Medelvärde: " ++ io_lib:format("~.7f",[MedelVarde]) ++  "</li>\n"),
   write_stddiv(Averages, IO).
