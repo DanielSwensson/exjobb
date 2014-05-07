@@ -12,8 +12,8 @@ test() ->
 
 run(Dir) -> 
   {ok, Count, Results} = run_per_dir(Dir),
-  analyze:get_stddiv(Results,Count),
-  save:save_to_file(Results,Count, "results.html").
+  Stddiv = analyze:get_stddiv(Results,Count),
+  save:save_to_file(Results,Count, Stddiv, "results.html").
 
 
 run_per_dir(Dir) ->

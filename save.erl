@@ -1,11 +1,18 @@
 -module(save).
--export([save_to_file/3]).
+-export([save_to_file/4]).
 
 
-save_to_file(Results,Count,FileName) ->
+save_to_file(Results,Count,Stddiv,FileName) ->
   {ok, IO} = file:open(FileName,[write,raw]),
-  file:write(IO, "<h1> Results </h1>\n"),
-  file:write(IO, "<b> Total number of students: " ++ integer_to_list(Count) ++ "</b>\n"),
+  file:write(IO, "<h1> Resultat </h1>\n"),
+
+  file:write(IO, "<b> Antal studenter: " ++ integer_to_list(Count) ++ "</b>\n"),
+
+  file:write(IO, "<h2> Värden </h2>\n"),
+  file:write(IO, "<ul>\n"),
+  write_stddiv(Stddiv, IO),
+  file:write(IO, "</ul>\n"),
+
   write_result_per_student(Results,IO),
   file:close(IO),
   io:format("DONE! file ~p written ~n",[FileName]).
@@ -24,5 +31,11 @@ write_result_per_student([Result | Results],IO) ->
 write_list([], _IO) ->
   ok;
 write_list([{ErrorType, Freq}| T], IO) ->
-  file:write(IO, "<li>" ++ [ErrorType] ++ " | <b>" ++ integer_to_list(Freq) ++ "</b></li>\n"),
+  file:write(IO, "<li>" ++ [ErrorType] ++ " = <b>" ++ integer_to_list(Freq) ++ "</b></li>\n"),
   write_list(T,IO).
+
+write_stddiv([],_) -> ok;
+write_stddiv([{Type, AverageList} | Averages],IO) ->
+  {MedelVarde, Avvikelse} = stddiv:run(AverageList),
+  file:write(IO, "<li><h4>" ++ [Type] ++ "</h4><br>Avvikelse: " ++ io_lib:format("~.7f",[Avvikelse]) ++ "<br>" ++ " Medelvärde: " ++ io_lib:format("~.7f",[MedelVarde]) ++  "</li>\n"),
+  write_stddiv(Averages, IO).

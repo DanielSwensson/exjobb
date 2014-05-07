@@ -25,5 +25,5 @@ run(L) ->
 	Delt  = delta(L,Avg1),
 	Sqrd = square_list(Delt),
 	Avg2 = average(Sqrd),
-	math:sqrt(Avg2).
+	{Avg1 ,math:sqrt(Avg2)}.
 	

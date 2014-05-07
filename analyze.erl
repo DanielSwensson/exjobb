@@ -25,7 +25,15 @@ get_error_frequency([[H]|T],Res) ->
 get_stddiv(Results,Count) ->
 	EmptyList = make_empty_list(Count),
 	ErrorDict = get_occuring_errors(Results,dict:new(),EmptyList),
-	erlang:display(get_freq_per_error(Results,dict:to_list(ErrorDict),dict:new())).
+	AveragePerError = get_freq_per_error(Results,dict:to_list(ErrorDict),dict:new()),
+	dict:to_list(AveragePerError).
+
+get_stddiv([]) -> ok;
+get_stddiv([{Type, AverageList} | Averages]) ->
+	F = stddiv:run(AverageList),
+	erlang:display(io_lib:format("~p~.7f",[Type,F])),
+	get_stddiv(Averages).
+
 
 get_occuring_errors([],ErrorDict,_) -> ErrorDict;
 get_occuring_errors([Result|Results],ErrorDict,EmptyList) ->
@@ -56,7 +64,7 @@ get_freq_per_error(Results,[{Type, CountList} | Errors],ResultDict) ->
 get_freq_per_error([], _, _, CountList) -> CountList;
 
 get_freq_per_error([Result | Results], ErrorTypeToCount, [_CurrentCount | CountList], FinalCountList) ->
-	{Errors, _, _} = Result,
+	{Errors, NrLines, _} = Result,
 	Frequency = 
 	case dict:is_key(ErrorTypeToCount, Errors) of 
 		true ->
@@ -64,7 +72,7 @@ get_freq_per_error([Result | Results], ErrorTypeToCount, [_CurrentCount | CountL
 		false ->
 			0
 	end,
-	get_freq_per_error(Results, ErrorTypeToCount, CountList, FinalCountList ++ [Frequency]).
+	get_freq_per_error(Results, ErrorTypeToCount, CountList, FinalCountList ++ [Frequency * 100 / NrLines]).
 
 
 
