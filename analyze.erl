@@ -5,8 +5,12 @@
 
 match_errors(Res) ->
   Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.checks\.(?<ERR>.+)\"",
-  {match,Results} = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
-  Results.
+  Match = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
+  	
+  case Match of 
+  	{match, Results} -> Results;
+  	Other -> []
+  end.
 
 get_error_frequency(Checkstyle) ->
 	Results = match_errors(Checkstyle),
