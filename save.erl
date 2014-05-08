@@ -6,12 +6,8 @@ save_backup(Results, Count, Stddiv,FileName) ->
   file:write_file("Backup_" ++ FileName , Backup).
 
 save_to_file(Results,Count,Stddiv,FileName) ->
-  
   writer:run(FileName ++ ".html"),
   save_backup(Results, Count, Stddiv,FileName),
-  
-
-
   writer:write("<h1> Resultat </h1>\n"),
 
   writer:write("<b> Antal studenter: " ++ integer_to_list(Count) ++ "</b>\n"),
@@ -37,8 +33,7 @@ write_result_per_student([Result | Results]) ->
   writer:write("</ul>\n"),
   write_result_per_student(Results).
 
-write_list([]) ->
-  ok;
+write_list([]) -> ok;
 write_list([{ErrorType, Freq}| T]) ->
   writer:write("<li>" ++ [ErrorType] ++ " = <b>" ++ integer_to_list(Freq) ++ "</b></li>\n"),
   write_list(T).

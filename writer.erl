@@ -1,5 +1,5 @@
 -module(writer).
--compile(export_all).
+-export([write/1,close/0,run/1]).
 
 write(Data) ->  
   writer ! {write, Data}.
