@@ -4,7 +4,7 @@
 
 
 match_errors(Res) ->
-  Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.checks\.(?<ERR>.+)\"",
+  Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.(?<ERR>.+)\"",
   Match = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
   	
   case Match of 
