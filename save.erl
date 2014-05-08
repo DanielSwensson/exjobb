@@ -4,6 +4,8 @@
 
 save_to_file(Results,Count,Stddiv,FileName) ->
   {ok, IO} = file:open(FileName,[write,raw]),
+  Backup = term_to_binary({Results, Count, Stddiv}),
+  file:write_file("Backup", Backup),
   file:write(IO, "<h1> Resultat </h1>\n"),
 
   file:write(IO, "<b> Antal studenter: " ++ integer_to_list(Count) ++ "</b>\n"),
