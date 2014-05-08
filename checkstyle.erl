@@ -8,13 +8,10 @@
 test() ->
   run("./sources/").
 
-
-
 run(Dir) -> 
   {ok, Count, Results} = run_per_dir(Dir),
   Stddiv = analyze:get_stddiv(Results,Count),
   save:save_to_file(Results,Count, Stddiv, "results").
-
 
 run_per_dir(Dir) ->
     {ok,Filenames} = file:list_dir(Dir),
@@ -31,8 +28,6 @@ run_per_dir(Dir, [DirName|Filenames],Count, Res) ->
       run_per_dir(Dir, Filenames,Count,Res)
   end.
  
-
-
 run_checkstyle(DirName,Path) ->
   {NrLines,NrComments} = count_lines:count(Path ++ "/"),
   io:format("Running Checkstyle at ~p ~n", [Path]),
