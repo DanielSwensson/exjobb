@@ -6,3 +6,4 @@ deps
 erl_crash.dump
 .DS_Store
 *.html
+Backup_results
