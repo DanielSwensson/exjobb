@@ -13,6 +13,7 @@ class main{
 				if (reg[x].equals("")){
 					count=x;
 				}
+				// kommentarer!
 			}
 			System.out.print(" \n1 - Registrera hund\n2 - Lista hundar\n3 - Ta bort hund\n4 - Avsluta program\nVal: ");
 			int choice=sc.nextInt();
@@ -60,6 +61,10 @@ class main{
 			else if (choice==4){
 				menu=false;
 			}
+			/*
+			det här är en kommentar
+			mer kommentarers
+			*/
 		}
 	}
 }

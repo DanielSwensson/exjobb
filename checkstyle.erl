@@ -34,13 +34,13 @@ run_per_dir(Dir, [DirName|Filenames],Count, Res) ->
 
 
 run_checkstyle(DirName,Path) ->
-  NrLines = count_lines:count(Path ++ "/"),
+  {NrLines,NrComments} = count_lines:count(Path ++ "/"),
   io:format("Running Checkstyle at ~p ~n", [Path]),
   Checkstyle = os:cmd("java -jar checkstyle/checkstyle-5.7-all.jar -c checkstyle/sun_checks.xml -r " ++ Path ++ "/*.java" ++  " -f xml"),
   io:format("CheckStyle on ~p completed ~n", [Path]),
   io:format("Analyzing results on ~p ~n", [Path]),
   Results = analyze:get_error_frequency(Checkstyle),
-  [{Results, NrLines, DirName}].
+  [{Results, NrLines,NrComments, DirName}].
 
 
 

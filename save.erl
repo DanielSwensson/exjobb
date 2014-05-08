@@ -19,9 +19,10 @@ save_to_file(Results,Count,Stddiv,FileName) ->
 
 write_result_per_student([],_) -> ok;
 write_result_per_student([Result | Results],IO) ->
-  {Errors, NrLines, Name} = Result,
+  {Errors, NrLines,NrComments, Name} = Result,
   file:write(IO, "<h4> "++ Name ++ "</h4>\n"),
-  file:write(IO, "<b> Lines of code: " ++ integer_to_list(NrLines) ++ "</b>\n"),
+  file:write(IO, "<b> Lines of code: " ++ integer_to_list(NrLines) ++ "</b><br>\n"),
+  file:write(IO, "<b> Lines of comments: " ++ integer_to_list(NrComments) ++ "</b>\n"),
   file:write(IO, "<ul>\n"),
   ResultsList = dict:to_list(Errors),
   write_list(ResultsList, IO),

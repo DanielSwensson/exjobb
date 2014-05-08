@@ -37,7 +37,7 @@ get_stddiv([{Type, AverageList} | Averages]) ->
 
 get_occuring_errors([],ErrorDict,_) -> ErrorDict;
 get_occuring_errors([Result|Results],ErrorDict,EmptyList) ->
-	{Errors, _, _} = Result,
+	{Errors, _,_, _} = Result,
 	ErrorDict1 = check_errors(dict:to_list(Errors),ErrorDict,EmptyList),
 	get_occuring_errors(Results, ErrorDict1, EmptyList).
 
@@ -64,7 +64,7 @@ get_freq_per_error(Results,[{Type, CountList} | Errors],ResultDict) ->
 get_freq_per_error([], _, _, CountList) -> CountList;
 
 get_freq_per_error([Result | Results], ErrorTypeToCount, [_CurrentCount | CountList], FinalCountList) ->
-	{Errors, NrLines, _} = Result,
+	{Errors, NrLines, NrComments, _} = Result,
 	Frequency = 
 	case dict:is_key(ErrorTypeToCount, Errors) of 
 		true ->

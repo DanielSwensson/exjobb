@@ -1,0 +1,3 @@
+newlineatendoffile - påverkar inte läsbarhet, ta bort
+tabcharacter - påverkar inte läsbarhet, ta bort
+finalparameter - kan vara relevant för läsbarhet
