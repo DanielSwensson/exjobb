@@ -1,14 +1,13 @@
 -module(save).
--export([save_to_file/4]).
+-export([save_to_file/4,writer/1]).
 
 save_backup(Results, Count, Stddiv,FileName) ->
   Backup = term_to_binary({Results, Count, Stddiv}),
   file:write_file("Backup_" ++ FileName , Backup).
 
 save_to_file(Results,Count,Stddiv,FileName) ->
-  {ok, IO} = file:open(FileName ++ ".html",[write,raw]),
-
-  register(writer, spawn(fun() -> writer(IO) end)),
+  
+  start_writer(FileName ++ ".html"),
   save_backup(Results, Count, Stddiv,FileName),
   
 
@@ -54,11 +53,17 @@ write(Data) ->
 
 close() -> writer ! {close}.
 
+start_writer(FileName) ->
+  register(writer,spawn(fun() -> 
+    {ok, IO} = file:open(FileName,[write,raw]),
+    writer(IO) 
+  end)).
+  
+
 writer(IO) ->
   receive 
     {write, Data} ->
-      erlang:display("write"),
-      file:write(IO, Data),
+      ok = file:write(IO, Data),
       writer(IO);
     {close} ->
       file:close(IO),
