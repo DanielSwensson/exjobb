@@ -1,12 +1,12 @@
 -module(save).
--export([save_to_file/4]).
+-export([save_to_file/6]).
 -import(writer,[write/1]).
 
 save_backup(Results, Count, Stddiv,FileName) ->
   Backup = term_to_binary({Results, Count, Stddiv}),
   file:write_file("Backup_" ++ FileName , Backup).
 
-save_to_file(Results,Count,Stddiv,FileName) ->
+save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
   writer:run(FileName ++ ".html"),
   save_backup(Results, Count, Stddiv,FileName),
   write("<!doctype html>\n"),
@@ -22,8 +22,9 @@ save_to_file(Results,Count,Stddiv,FileName) ->
 
   write("<h1 class='page-header'> Resultat "),
 
-  write("<small> Antal studenter: " ++ integer_to_list(Count) ++ "</small></h1>\n"),
-
+  write("<small> Antal studenter: " ++ integer_to_list(Count) ++ "</small><br>\n"),
+  write("<small> Medelvärde för antal kommentarer per elev: " ++ io_lib:format("~.7f",[AverageComments / Count]) ++ "</small><br>\n"),
+  write("<small> Medelvärde för rader kod per elev: " ++ io_lib:format("~.7f",[NrLines/Count]) ++ "</small></h1>\n"),
   write("<h2> Värden </h2>\n"),
   % write("<ul>\n"),
   write_stddiv(Stddiv),
@@ -40,7 +41,7 @@ save_to_file(Results,Count,Stddiv,FileName) ->
 
 write_result_per_student([]) -> ok;
 write_result_per_student([Result | Results]) ->
-  {Errors, NrLines,NrComments, Name} = Result,
+  {Errors, NrLines,NrComments, Name,_} = Result,
    write("<div class='col-md-4'>\n"),
   write("<h3> "++ Name ++ " "),
   write("<small> Lines of code: " ++ integer_to_list(NrLines)),
