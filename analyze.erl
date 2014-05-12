@@ -9,7 +9,7 @@ match_errors(Res) ->
   	
   case Match of 
   	{match, Results} -> Results;
-  	Other -> []
+  	_Other -> []
   end.
 
 get_error_frequency(Checkstyle) ->
@@ -68,7 +68,7 @@ get_freq_per_error(Results,[{Type, CountList} | Errors],ResultDict) ->
 get_freq_per_error([], _, _, CountList) -> CountList;
 
 get_freq_per_error([Result | Results], ErrorTypeToCount, [_CurrentCount | CountList], FinalCountList) ->
-	{Errors, NrLines, NrComments, _,_} = Result,
+	{Errors, NrLines, _NrComments, _,_} = Result,
 	Frequency = 
 	case dict:is_key(ErrorTypeToCount, Errors) of 
 		true ->
