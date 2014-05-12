@@ -38,6 +38,7 @@ run_checkstyle(DirName,Path) ->
   io:format("CheckStyle on ~p completed ~n", [Path]),
   io:format("Analyzing results on ~p ~n", [Path]),
   Results = analyze:get_error_frequency(Checkstyle),
+  % Res1 = dict:store("Rader_kod",NrLines,dict:store("Kommentarer",NrComments,Results)),
   {Results, NrLines,NrComments, DirName,NrComments / NrLines}.
 
 
