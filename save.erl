@@ -8,7 +8,8 @@ save_backup(Results, Count, Stddiv,FileName) ->
   file:write_file("Backup_" ++ FileName , Backup).
 
 save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
-  writer:run(FileName ++ ".html"),
+  file:make_dir("results"),
+  writer:run("results/" ++ FileName ++ ".html"),
   save_backup(Results, Count, Stddiv,FileName),
 
   write_from_file("template/header.html"),

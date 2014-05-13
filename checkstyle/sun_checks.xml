@@ -165,6 +165,8 @@
         <module name="InterfaceIsType"/>
         <module name="VisibilityModifier"/>
 
+ 
+
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
