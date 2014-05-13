@@ -20,19 +20,22 @@ save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
 
   write("<div class='container'>\n"),
 
-  write("<h1 class='page-header'> Resultat "),
+  write("<h4 class='page-header'> Resultat </h4>"),
+  
+  write("<p><small> Antal studenter: " ++ integer_to_list(Count) ++ "</small></p>\n"),
+  write("<p><small> Medelvärde för antal kommentarer per elev: " ++ io_lib:format("~.7f",[AverageComments / Count]) ++ "</small></p>\n"),
+  write("<p><small> Medelvärde för rader kod per elev: " ++ io_lib:format("~.7f",[NrLines/Count]) ++ "</small></p>\n"),
+  write("<div class='row'>"),
 
-  write("<small> Antal studenter: " ++ integer_to_list(Count) ++ "</small><br>\n"),
-  write("<small> Medelvärde för antal kommentarer per elev: " ++ io_lib:format("~.7f",[AverageComments / Count]) ++ "</small><br>\n"),
-  write("<small> Medelvärde för rader kod per elev: " ++ io_lib:format("~.7f",[NrLines/Count]) ++ "</small></h1>\n"),
   write("<h2> Värden </h2>\n"),
-  % write("<ul>\n"),
+  
   write_stddiv(Stddiv),
-  % write("</ul>\n"),
-  write("<br>\n"),
-  write("<br>\n"),
+
+  write("</div>"),
+  write("<div class='row'>"),
   write("<h2> Individuella resultat </h2>\n"),
   write_result_per_student(Results),
+  write("</div>"),
   write("</div>\n"),
   write("</body>\n"),
   write("</html>\n"),
