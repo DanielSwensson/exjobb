@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
+	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'>
+	<title>Resultat</title>
+</head>
+<body>
+
+	<div class='container'>
+
+		<h1 class='page-header'>Resultat</h1>
+			
+			<p>
+				<small> Antal studenter: $count$ </small>
+			</p>
+			
+			<p>
+				<small> Medelvärde för antal kommentarer per elev: $averageComments$  </small>
+			</p>
+			<p>
+				<small> Medelvärde för rader kod per elev: $averageRows$ </small>
+			</p>
+
+			<div class="row">
+				<h2>Värden</h2>
+				$map:{
+				<div class="col-md-4">
+					<h5> $error.type$ </h5>
+					<p>
+						Avvikelse: $error.avvikelse$
+						<br>
+						Medelvärde: $error.medelvarde$
+					</p>
+				</div>
+				}allErrors$
+			</div>
+
+			<div class='row'>
+				
+				<h2>Individuella resultat</h2>
+
+				$map:{
+					<div class='col-md-4'>
+						<h3> $result.name$ <small>Lines of code: $result.nrLines$ Comment lines: $result.nrComments$ </small> </h3>
+
+						$map:{
+							<h6>$error.errorType$: <small> $error.freq$ </small></h6>
+						}result.errors$
+					</div>
+				} resultsPerStudent$ 
+
+			</div>
+
+		</div>
+	</body>
+</html>
+
