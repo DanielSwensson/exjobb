@@ -5,7 +5,7 @@
 
 save_backup(Results, Count, Stddiv,FileName) ->
   Backup = term_to_binary({Results, Count, Stddiv}),
-  file:write_file("Backup_" ++ FileName , Backup).
+  file:write_file("results/Backup_" ++ FileName , Backup).
 
 save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
   file:make_dir("results"),
