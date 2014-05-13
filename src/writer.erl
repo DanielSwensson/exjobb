@@ -11,7 +11,7 @@ close() -> writer ! {close}.
 
 run(FileName) ->
   register(writer,spawn(fun() -> 
-    {ok, IO} = file:open(FileName,[write,raw]),
+    {ok, IO} = file:open(FileName,[write,{encoding, utf8}]),
     writer(IO) 
   end)).
   
