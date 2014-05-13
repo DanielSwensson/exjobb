@@ -6,7 +6,7 @@
 -export([run/1,test/0]).
 
 test() ->
-  run("./sources/").
+  run("./testcode/").
 
 run(Dir) -> 
   {ok, Count, Results,AverageComments,NrLines} = run_per_dir(Dir),
