@@ -1,6 +1,7 @@
 -module(save).
 -export([save_to_file/6]).
 -import(writer,[write/1]).
+-import(writer,[write_from_file/1]).
 
 save_backup(Results, Count, Stddiv,FileName) ->
   Backup = term_to_binary({Results, Count, Stddiv}),
@@ -9,21 +10,8 @@ save_backup(Results, Count, Stddiv,FileName) ->
 save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
   writer:run(FileName ++ ".html"),
   save_backup(Results, Count, Stddiv,FileName),
-  % write("<!doctype html>\n"),
-  % write("<html>\n"),
-  % write("<head>\n"),
-  % write("<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>\n"),
-  % write("<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'>\n"),
-  % write("<title>Resultat</title>\n"),
-  % write("</head>\n"),
-  % write("<body>\n"),
 
-  % write("<div class='container'>\n"),
-
-  % write("<h4 class='page-header'> Resultat </h4>"),
-
-  {ok,Header} = file:read_file("template/header.html"),
-  write(binary_to_list(Header)),
+  write_from_file("template/header.html"),
   
   write("<p><small> Antal studenter: " ++ integer_to_list(Count) ++ "</small></p>\n"),
   write("<p><small> Medelvärde för antal kommentarer per elev: " ++ io_lib:format("~.7f",[AverageComments / Count]) ++ "</small></p>\n"),
@@ -40,9 +28,8 @@ save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
   write_result_per_student(Results),
   write("</div>"),
 
-  {ok,Footer} = file:read_file("template/footer.html"),
-  write(binary_to_list(Footer)),
-  
+  write_from_file("template/footer.html"),
+
  
   writer:close(),
   io:format("DONE! file ~p written ~n",[FileName]).
