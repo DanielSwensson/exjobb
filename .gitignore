@@ -5,5 +5,5 @@ deps
 *.plt
 erl_crash.dump
 .DS_Store
-*.html
+results.html
 Backup_results
