@@ -21,6 +21,7 @@ count_for_each_file([File | Files],Dir,{Total,Comments}) ->
     _Else ->
       count_for_each_file(Files,Dir,{Total,Comments})
     end.
+count_lines([], Lines,Comments,_Comment,_BlockComment) when (Lines > 0) -> {Lines + 1,Comments};
 count_lines([], Lines,Comments,_Comment,_BlockComment) -> {Lines,Comments};
 
 count_lines([$\n|L],Lines,Comments,Comment,BlockComment) ->
