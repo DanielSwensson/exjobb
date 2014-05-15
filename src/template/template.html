@@ -26,7 +26,7 @@
 			<div class="row">
 				<h2>Värden</h2>
 				$map:{
-				<div class="col-md-4">
+				<div class="col-md-4" id="$error.type$">
 					<h5> $error.type$ </h5>
 					<p>
 						Avvikelse: $error.avvikelse$
@@ -42,13 +42,15 @@
 				<h2>Individuella resultat</h2>
 
 				$map:{
-					<div class='col-md-4'>
+					<div class='col-md-4' id="$result.name$">
 						<h3> $result.name$ <small>
 						Lines of code: <span class="lineCount">$result.nrLines$</span> 
 						Comment lines: <span class="commentCount">$result.nrComments$</span> </small> </h3>
 
 						$map:{
-							<h6>$error.errorType$: <small> $error.freq$ </small></h6>
+							<span class="student$error.errorType$">
+								<h6>$error.errorType$: <small> $error.freq$ </small></h6>
+							</span>
 						}result.errors$
 					</div>
 				} resultsPerStudent$ 

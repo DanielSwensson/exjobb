@@ -3,14 +3,14 @@
 -import(writer,[write/1]).
 -import(writer,[write_from_file/1]).
 
-save_backup(Results, Count, Stddiv,FileName) ->
-  Backup = term_to_binary({Results, Count, Stddiv}),
+save_backup(FileName,TupleToSave) ->
+  Backup = term_to_binary(TupleToSave),
   file:write_file("results/Backup_" ++ FileName , Backup).
 
 save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
   file:make_dir("results"),
   writer:run("results/" ++ FileName ++ ".html"),
-  save_backup(Results, Count, Stddiv,FileName),
+  save_backup(FileName,{Results, Count, Stddiv,AverageComments,NrLines}),
   Data = [{count, Count}, {averageComments , io_lib:format("~.7f",[AverageComments / Count])}, {averageRows, io_lib:format("~.7f",[NrLines/Count])}],
   {ok, Compiled} = sgte:compile_file("template/template.html"),
 
