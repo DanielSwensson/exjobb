@@ -3,10 +3,19 @@
 %All uncommented lines are counted and results are saved to results.html %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -module(checkstyle).
--export([run/2,test/0]).
+-export([run/2,test/0,oop1/0,oop2/0,alda/0]).
 
 test() ->
-  run("../testcode/","testcodeResult").
+  run("../testcode/","testcodeResults").
+
+oop1() ->
+   run("../oop1/","oop1Results").
+
+oop2() ->
+   run("../oop2/","oop2Results").
+
+alda() ->
+   run("../alda/","aldaResults").
 
 run(Dir,SaveName) -> 
   {ok, Count, Results,AverageComments,NrLines} = run_per_dir(Dir),
