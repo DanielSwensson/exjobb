@@ -3,15 +3,15 @@
 %All uncommented lines are counted and results are saved to results.html %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -module(checkstyle).
--export([run/1,test/0]).
+-export([run/2,test/0]).
 
 test() ->
-  run("../testcode/").
+  run("../testcode/","testcodeResult").
 
-run(Dir) -> 
+run(Dir,SaveName) -> 
   {ok, Count, Results,AverageComments,NrLines} = run_per_dir(Dir),
   Stddiv = analyze:get_stddiv(Results,Count),
-  save:save_to_file(Results,Count, Stddiv, NrLines , AverageComments ,"results").
+  save:save_to_file(Results,Count, Stddiv, NrLines , AverageComments ,SaveName).
 
 run_per_dir(Dir) ->
     {ok,Filenames} = file:list_dir(Dir),
