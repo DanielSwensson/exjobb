@@ -12,3 +12,6 @@ oop2() ->
 
 alda() ->
    checkstyle:run("../alda/","aldaResults").
+
+prog21() ->
+   checkstyle:run("../PROG21/","prog21Results").

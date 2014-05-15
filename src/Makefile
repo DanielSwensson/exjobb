@@ -22,6 +22,9 @@ oop2: beams
 alda: beams
 	${ERL} -pa / -s run alda
 
+prog21: beams
+	${ERL} -pa / -s run prog21
+
 clean: 
 	rm -rf *.beam *.html *.dump
 
