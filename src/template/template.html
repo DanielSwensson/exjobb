@@ -13,14 +13,14 @@
 		<h1 class='page-header'>Resultat</h1>
 			
 			<p>
-				<small> Antal studenter: $count$ </small>
+				<small> Antal studenter: <span id="studentCount">$count$</span></small>
 			</p>
 			
 			<p>
-				<small> Medelvärde för antal kommentarer per elev: $averageComments$  </small>
+				<small> Medelvärde för antal kommentarer per elev: <span id="commentAverage">$averageComments$</span></small>
 			</p>
 			<p>
-				<small> Medelvärde för rader kod per elev: $averageRows$ </small>
+				<small> Medelvärde för rader kod per elev: <span id="rowAverage">$averageRows$</span> </small>
 			</p>
 
 			<div class="row">
@@ -43,7 +43,9 @@
 
 				$map:{
 					<div class='col-md-4'>
-						<h3> $result.name$ <small>Lines of code: $result.nrLines$ Comment lines: $result.nrComments$ </small> </h3>
+						<h3> $result.name$ <small>
+						Lines of code: <span class="lineCount">$result.nrLines$</span> 
+						Comment lines: <span class="commentCount">$result.nrComments$</span> </small> </h3>
 
 						$map:{
 							<h6>$error.errorType$: <small> $error.freq$ </small></h6>
