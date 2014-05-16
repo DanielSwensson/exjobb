@@ -15,3 +15,6 @@ alda() ->
 
 prog21() ->
    checkstyle:run("../PROG21/","prog21Results").
+
+prog22() ->
+   checkstyle:run("../PROG22/","prog22Results").

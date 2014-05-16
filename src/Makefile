@@ -25,6 +25,9 @@ alda: beams
 prog21: beams
 	${ERL} -pa / -s run prog21
 
+prog22: beams
+	${ERL} -pa / -s run prog22
+
 clean: 
 	rm -rf *.beam *.html *.dump
 
