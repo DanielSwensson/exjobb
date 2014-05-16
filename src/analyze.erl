@@ -5,16 +5,22 @@
 
 match_errors(Res) ->
   Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.(?<ERR>.+)\"",
-  Match = re:run(Res,Reg,[global,{capture,['ERR'],list}]),
-  	
-  case Match of 
-  	{match, Results} -> Results;
-  	_Other -> []
-  end.
+	  case re:run(Res,Reg,[global,{capture,['ERR'],list}]) of 
+	  	{match, Results} -> 
+	  		case lists:member(["TreeWalker"],Results) of  
+  				false ->
+	  				Results;
+	  		 	true -> []
+	  		end;
+	  	_Other -> []
+	  end.
+	 
 
 get_error_frequency(Checkstyle) ->
-	Results = match_errors(Checkstyle),
-	get_error_frequency(Results, dict:new()).
+	case Results = match_errors(Checkstyle) of 
+		[] -> false;
+		_else -> get_error_frequency(Results, dict:new())
+	end.
 
 get_error_frequency([],Res) -> Res;
 get_error_frequency([[H]|T],Res) -> 
