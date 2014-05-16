@@ -3,6 +3,7 @@ deps
 *.o
 *.beam
 *.plt
+/*.html
 erl_crash.dump
 .DS_Store
 PROG21/
