@@ -44,6 +44,6 @@ count_lines([$\n|L],Lines,Comments,Comment,BlockComment) ->
  	count_lines(L,Lines,Comments,Comment,true);
 
   count_lines([$*,$/|L], Lines,Comments, Comment,_BlockComment) ->
- 	count_lines(L,Lines,Comments,Comment,false);
+ 	count_lines(L,Lines,Comments + 1,Comment,false);
 
 count_lines([_H|T], Lines,Comments,Comment,BlockComment) -> count_lines(T, Lines,Comments,Comment,BlockComment).
