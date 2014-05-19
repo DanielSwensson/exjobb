@@ -27,11 +27,11 @@ count_lines([], Lines,Comments,_Comment,_BlockComment) -> {Lines,Comments};
 count_lines([$\n|L],Lines,Comments,Comment,BlockComment) ->
  case Comment of 
  	true ->
- 		count_lines(L, Lines,Comments,false,BlockComment);
+ 		count_lines(L, Lines,Comments + 1,false,BlockComment);
  	false	->
  		case BlockComment of 
  			true ->
- 				count_lines(L, Lines,Comments+1, false, BlockComment);
+ 				count_lines(L, Lines,Comments + 1, false, BlockComment);
  			false ->
  				count_lines(L, Lines + 1,Comments,false,false)
  		end  		

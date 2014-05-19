@@ -1,7 +1,116 @@
 <!doctype html>
 <html lang="sv">
 <head>
+	<style type="text/css">
+
+
+	/*
+	Table Style - This is what you want
+	------------------------------------------------------------------ */
+	table a:link {
+		color: #666;
+		font-weight: bold;
+		text-decoration:none;
+	}
+	table a:visited {
+		color: #999999;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	table a:active,
+	table a:hover {
+		color: #bd5a35;
+		text-decoration:underline;
+	}
+	table {
+		font-family:Arial, Helvetica, sans-serif;
+		color:#666;
+		font-size:12px;
+		text-shadow: 1px 1px 0px #fff;
+		background:#eaebec;
+		margin:20px;
+		border:#ccc 1px solid;
+
+		-moz-border-radius:3px;
+		-webkit-border-radius:3px;
+		border-radius:3px;
+
+		-moz-box-shadow: 0 1px 2px #d1d1d1;
+		-webkit-box-shadow: 0 1px 2px #d1d1d1;
+		box-shadow: 0 1px 2px #d1d1d1;
+	}
+	table th {
+		padding:21px 25px 22px 25px;
+		border-top:1px solid #fafafa;
+		border-bottom:1px solid #e0e0e0;
+
+		background: #ededed;
+		background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+		background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+	}
+	table th:first-child{
+		text-align: left;
+		padding-left:20px;
+	}
+	table tr:first-child th:first-child{
+		-moz-border-radius-topleft:3px;
+		-webkit-border-top-left-radius:3px;
+		border-top-left-radius:3px;
+	}
+	table tr:first-child th:last-child{
+		-moz-border-radius-topright:3px;
+		-webkit-border-top-right-radius:3px;
+		border-top-right-radius:3px;
+	}
+	table tr{
+		text-align: center;
+		padding-left:20px;
+	}
+	table tr td:first-child{
+		text-align: left;
+		padding-left:20px;
+		border-left: 0;
+	}
+	table tr td {
+		padding:18px;
+		border-top: 1px solid #ffffff;
+		border-bottom:1px solid #e0e0e0;
+		border-left: 1px solid #e0e0e0;
+		
+		background: #fafafa;
+		background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+		background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+	}
+	table tr.even td{
+		background: #f6f6f6;
+		background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+		background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+	}
+	table tr:last-child td{
+		border-bottom:0;
+	}
+	table tr:last-child td:first-child{
+		-moz-border-radius-bottomleft:3px;
+		-webkit-border-bottom-left-radius:3px;
+		border-bottom-left-radius:3px;
+	}
+	table tr:last-child td:last-child{
+		-moz-border-radius-bottomright:3px;
+		-webkit-border-bottom-right-radius:3px;
+		border-bottom-right-radius:3px;
+	}
+	table tr:hover td{
+		background: #f2f2f2;
+		background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+		background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+	}
+
+	</style>
 	<meta charset='UTF-8'>
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script> 
 	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
 	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'>
 	<title>Resultat</title>
@@ -17,321 +126,400 @@
 			</p>
 			
 			<p>
-				<small> Medelvärde för antal kommentarer per elev: <span id="commentAverage">0.0054177</span></small>
+				<small> Medelvärde för antal kommentarer per elev: <span id="commentAverage">0.0636027</span></small>
 			</p>
 			<p>
 				<small> Medelvärde för rader kod per elev: <span id="rowAverage">351.9152542</span> </small>
 			</p>
 
 			<div class="row">
-				<h2>Värden</h2>
+				<h2>Errors</h2>
+				<table cellspacing='0' id="myTable" class="tablesorter">
+					<thead>
+					<tr>
+						<th>Error type</th>
+						<th>Deviation</th>
+						<th>Average</th>
+					</tr>
+				</thead>
+					<tbody>
 				
-				<div class="col-md-4" id="checks.blocks.NeedBracesCheck">
-					<h5> checks.blocks.NeedBracesCheck </h5>
-					<p>
-						Avvikelse: 1.6187340
-						<br>
-						Medelvärde: 1.4596950
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.whitespace.NoWhitespaceBeforeCheck">
-					<h5> checks.whitespace.NoWhitespaceBeforeCheck </h5>
-					<p>
-						Avvikelse: 0.1564793
-						<br>
-						Medelvärde: 0.0574998
-					</p>
-				</div>
+					<tr>
+						<td>checks.blocks.NeedBracesCheck </td>
+					
+						<td>1.6187340 </td>
+						
+						<td>1.4596950 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.modifier.ModifierOrderCheck">
-					<h5> checks.modifier.ModifierOrderCheck </h5>
-					<p>
-						Avvikelse: 0.0562001
-						<br>
-						Medelvärde: 0.0102802
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.whitespace.GenericWhitespaceCheck">
-					<h5> checks.whitespace.GenericWhitespaceCheck </h5>
-					<p>
-						Avvikelse: 0.6799233
-						<br>
-						Medelvärde: 0.8091973
-					</p>
-				</div>
+					<tr>
+						<td>checks.whitespace.NoWhitespaceBeforeCheck </td>
+					
+						<td>0.1564793 </td>
+						
+						<td>0.0574998 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.naming.PackageNameCheck">
-					<h5> checks.naming.PackageNameCheck </h5>
-					<p>
-						Avvikelse: 0.1979495
-						<br>
-						Medelvärde: 0.0511318
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.naming.LocalVariableNameCheck">
-					<h5> checks.naming.LocalVariableNameCheck </h5>
-					<p>
-						Avvikelse: 0.7949549
-						<br>
-						Medelvärde: 0.3855809
-					</p>
-				</div>
+					<tr>
+						<td>checks.modifier.ModifierOrderCheck </td>
+					
+						<td>0.0562001 </td>
+						
+						<td>0.0102802 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.whitespace.MethodParamPadCheck">
-					<h5> checks.whitespace.MethodParamPadCheck </h5>
-					<p>
-						Avvikelse: 1.4679464
-						<br>
-						Medelvärde: 0.8438152
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.naming.MethodNameCheck">
-					<h5> checks.naming.MethodNameCheck </h5>
-					<p>
-						Avvikelse: 0.2329877
-						<br>
-						Medelvärde: 0.1140778
-					</p>
-				</div>
+					<tr>
+						<td>checks.whitespace.GenericWhitespaceCheck </td>
+					
+						<td>0.6799233 </td>
+						
+						<td>0.8091973 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.ArrayTypeStyleCheck">
-					<h5> checks.ArrayTypeStyleCheck </h5>
-					<p>
-						Avvikelse: 0.0487077
-						<br>
-						Medelvärde: 0.0089660
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.coding.InnerAssignmentCheck">
-					<h5> checks.coding.InnerAssignmentCheck </h5>
-					<p>
-						Avvikelse: 0.4004884
-						<br>
-						Medelvärde: 0.0889111
-					</p>
-				</div>
+					<tr>
+						<td>checks.naming.PackageNameCheck </td>
+					
+						<td>0.1979495 </td>
+						
+						<td>0.0511318 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.imports.AvoidStarImportCheck">
-					<h5> checks.imports.AvoidStarImportCheck </h5>
-					<p>
-						Avvikelse: 0.5094342
-						<br>
-						Medelvärde: 1.3734925
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.blocks.RightCurlyCheck">
-					<h5> checks.blocks.RightCurlyCheck </h5>
-					<p>
-						Avvikelse: 1.5879812
-						<br>
-						Medelvärde: 1.2177335
-					</p>
-				</div>
+					<tr>
+						<td>checks.naming.LocalVariableNameCheck </td>
+					
+						<td>0.7949549 </td>
+						
+						<td>0.3855809 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.whitespace.WhitespaceAroundCheck">
-					<h5> checks.whitespace.WhitespaceAroundCheck </h5>
-					<p>
-						Avvikelse: 16.0104751
-						<br>
-						Medelvärde: 22.5039695
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.naming.MemberNameCheck">
-					<h5> checks.naming.MemberNameCheck </h5>
-					<p>
-						Avvikelse: 0.7920403
-						<br>
-						Medelvärde: 0.3817420
-					</p>
-				</div>
+					<tr>
+						<td>checks.whitespace.MethodParamPadCheck </td>
+					
+						<td>1.4679464 </td>
+						
+						<td>0.8438152 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.whitespace.OperatorWrapCheck">
-					<h5> checks.whitespace.OperatorWrapCheck </h5>
-					<p>
-						Avvikelse: 0.1229507
-						<br>
-						Medelvärde: 0.0226134
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.sizes.LineLengthCheck">
-					<h5> checks.sizes.LineLengthCheck </h5>
-					<p>
-						Avvikelse: 6.0967132
-						<br>
-						Medelvärde: 8.0558525
-					</p>
-				</div>
+					<tr>
+						<td>checks.naming.MethodNameCheck </td>
+					
+						<td>0.2329877 </td>
+						
+						<td>0.1140778 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.blocks.EmptyBlockCheck">
-					<h5> checks.blocks.EmptyBlockCheck </h5>
-					<p>
-						Avvikelse: 0.0932773
-						<br>
-						Medelvärde: 0.0234588
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.blocks.LeftCurlyCheck">
-					<h5> checks.blocks.LeftCurlyCheck </h5>
-					<p>
-						Avvikelse: 2.2729871
-						<br>
-						Medelvärde: 0.4802621
-					</p>
-				</div>
+					<tr>
+						<td>checks.ArrayTypeStyleCheck </td>
+					
+						<td>0.0487077 </td>
+						
+						<td>0.0089660 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.coding.AvoidInlineConditionalsCheck">
-					<h5> checks.coding.AvoidInlineConditionalsCheck </h5>
-					<p>
-						Avvikelse: 0.0461170
-						<br>
-						Medelvärde: 0.0086192
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.whitespace.WhitespaceAfterCheck">
-					<h5> checks.whitespace.WhitespaceAfterCheck </h5>
-					<p>
-						Avvikelse: 2.6239313
-						<br>
-						Medelvärde: 1.7753401
-					</p>
-				</div>
+					<tr>
+						<td>checks.coding.InnerAssignmentCheck </td>
+					
+						<td>0.4004884 </td>
+						
+						<td>0.0889111 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.naming.ParameterNameCheck">
-					<h5> checks.naming.ParameterNameCheck </h5>
-					<p>
-						Avvikelse: 0.3148443
-						<br>
-						Medelvärde: 0.1280293
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.coding.HiddenFieldCheck">
-					<h5> checks.coding.HiddenFieldCheck </h5>
-					<p>
-						Avvikelse: 0.8011777
-						<br>
-						Medelvärde: 1.5926020
-					</p>
-				</div>
+					<tr>
+						<td>checks.imports.AvoidStarImportCheck </td>
+					
+						<td>0.5094342 </td>
+						
+						<td>1.3734925 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.coding.SimplifyBooleanExpressionCheck">
-					<h5> checks.coding.SimplifyBooleanExpressionCheck </h5>
-					<p>
-						Avvikelse: 0.4072428
-						<br>
-						Medelvärde: 0.1886907
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.whitespace.FileTabCharacterCheck">
-					<h5> checks.whitespace.FileTabCharacterCheck </h5>
-					<p>
-						Avvikelse: 0.2820583
-						<br>
-						Medelvärde: 0.6300448
-					</p>
-				</div>
+					<tr>
+						<td>checks.blocks.RightCurlyCheck </td>
+					
+						<td>1.5879812 </td>
+						
+						<td>1.2177335 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.naming.StaticVariableNameCheck">
-					<h5> checks.naming.StaticVariableNameCheck </h5>
-					<p>
-						Avvikelse: 0.0564743
-						<br>
-						Medelvärde: 0.0105780
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.coding.SimplifyBooleanReturnCheck">
-					<h5> checks.coding.SimplifyBooleanReturnCheck </h5>
-					<p>
-						Avvikelse: 0.0284319
-						<br>
-						Medelvärde: 0.0037333
-					</p>
-				</div>
+					<tr>
+						<td>checks.whitespace.WhitespaceAroundCheck </td>
+					
+						<td>16.0104751 </td>
+						
+						<td>22.5039695 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.whitespace.NoWhitespaceAfterCheck">
-					<h5> checks.whitespace.NoWhitespaceAfterCheck </h5>
-					<p>
-						Avvikelse: 0.0818695
-						<br>
-						Medelvärde: 0.0107500
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.sizes.MethodLengthCheck">
-					<h5> checks.sizes.MethodLengthCheck </h5>
-					<p>
-						Avvikelse: 0.0272898
-						<br>
-						Medelvärde: 0.0035833
-					</p>
-				</div>
+					<tr>
+						<td>checks.naming.MemberNameCheck </td>
+					
+						<td>0.7920403 </td>
+						
+						<td>0.3817420 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.coding.MagicNumberCheck">
-					<h5> checks.coding.MagicNumberCheck </h5>
-					<p>
-						Avvikelse: 2.4777488
-						<br>
-						Medelvärde: 3.3029077
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.whitespace.ParenPadCheck">
-					<h5> checks.whitespace.ParenPadCheck </h5>
-					<p>
-						Avvikelse: 0.6192239
-						<br>
-						Medelvärde: 0.2640691
-					</p>
-				</div>
+					<tr>
+						<td>checks.whitespace.OperatorWrapCheck </td>
+					
+						<td>0.1229507 </td>
+						
+						<td>0.0226134 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.FinalParametersCheck">
-					<h5> checks.FinalParametersCheck </h5>
-					<p>
-						Avvikelse: 1.0043837
-						<br>
-						Medelvärde: 5.4882349
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.imports.UnusedImportsCheck">
-					<h5> checks.imports.UnusedImportsCheck </h5>
-					<p>
-						Avvikelse: 0.0743604
-						<br>
-						Medelvärde: 0.0220138
-					</p>
-				</div>
+					<tr>
+						<td>checks.sizes.LineLengthCheck </td>
+					
+						<td>6.0967132 </td>
+						
+						<td>8.0558525 </td>
+					
+
+				</tr>
 				
-				<div class="col-md-4" id="checks.naming.TypeNameCheck">
-					<h5> checks.naming.TypeNameCheck </h5>
-					<p>
-						Avvikelse: 0.6092412
-						<br>
-						Medelvärde: 0.4220557
-					</p>
-				</div>
 				
-				<div class="col-md-4" id="checks.NewlineAtEndOfFileCheck">
-					<h5> checks.NewlineAtEndOfFileCheck </h5>
-					<p>
-						Avvikelse: 0.3557851
-						<br>
-						Medelvärde: 0.2399560
-					</p>
-				</div>
+					<tr>
+						<td>checks.blocks.EmptyBlockCheck </td>
+					
+						<td>0.0932773 </td>
+						
+						<td>0.0234588 </td>
+					
+
+				</tr>
 				
+				
+					<tr>
+						<td>checks.blocks.LeftCurlyCheck </td>
+					
+						<td>2.2729871 </td>
+						
+						<td>0.4802621 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.coding.AvoidInlineConditionalsCheck </td>
+					
+						<td>0.0461170 </td>
+						
+						<td>0.0086192 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.whitespace.WhitespaceAfterCheck </td>
+					
+						<td>2.6239313 </td>
+						
+						<td>1.7753401 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.naming.ParameterNameCheck </td>
+					
+						<td>0.3148443 </td>
+						
+						<td>0.1280293 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.coding.HiddenFieldCheck </td>
+					
+						<td>0.8011777 </td>
+						
+						<td>1.5926020 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.coding.SimplifyBooleanExpressionCheck </td>
+					
+						<td>0.4072428 </td>
+						
+						<td>0.1886907 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.whitespace.FileTabCharacterCheck </td>
+					
+						<td>0.2820583 </td>
+						
+						<td>0.6300448 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.naming.StaticVariableNameCheck </td>
+					
+						<td>0.0564743 </td>
+						
+						<td>0.0105780 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.coding.SimplifyBooleanReturnCheck </td>
+					
+						<td>0.0284319 </td>
+						
+						<td>0.0037333 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.whitespace.NoWhitespaceAfterCheck </td>
+					
+						<td>0.0818695 </td>
+						
+						<td>0.0107500 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.sizes.MethodLengthCheck </td>
+					
+						<td>0.0272898 </td>
+						
+						<td>0.0035833 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.coding.MagicNumberCheck </td>
+					
+						<td>2.4777488 </td>
+						
+						<td>3.3029077 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.whitespace.ParenPadCheck </td>
+					
+						<td>0.6192239 </td>
+						
+						<td>0.2640691 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.FinalParametersCheck </td>
+					
+						<td>1.0043837 </td>
+						
+						<td>5.4882349 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.imports.UnusedImportsCheck </td>
+					
+						<td>0.0743604 </td>
+						
+						<td>0.0220138 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.naming.TypeNameCheck </td>
+					
+						<td>0.6092412 </td>
+						
+						<td>0.4220557 </td>
+					
+
+				</tr>
+				
+				
+					<tr>
+						<td>checks.NewlineAtEndOfFileCheck </td>
+					
+						<td>0.3557851 </td>
+						
+						<td>0.2399560 </td>
+					
+
+				</tr>
+				
+					</tbody>
+				</table>
 			</div>
 
 			<div class='row'>
@@ -426,7 +614,7 @@
 					<div class='col-md-6' id="102897574208908899855173261944473605216">
 						<h5> 102897574208908899855173261944473605216 <small>
 						Lines of code: <span class="lineCount">344</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">3</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -550,7 +738,7 @@
 					<div class='col-md-6' id="114699507535429316132813467848777109765">
 						<h5> 114699507535429316132813467848777109765 <small>
 						Lines of code: <span class="lineCount">386</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">30</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -606,7 +794,7 @@
 					<div class='col-md-6' id="12187982549226797306491279188544854503">
 						<h5> 12187982549226797306491279188544854503 <small>
 						Lines of code: <span class="lineCount">370</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">10</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -678,7 +866,7 @@
 					<div class='col-md-6' id="124387894040551932128013218390665871372">
 						<h5> 124387894040551932128013218390665871372 <small>
 						Lines of code: <span class="lineCount">319</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">47</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -814,7 +1002,7 @@
 					<div class='col-md-6' id="135671770948389509204936759246378523886">
 						<h5> 135671770948389509204936759246378523886 <small>
 						Lines of code: <span class="lineCount">334</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">2</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -878,7 +1066,7 @@
 					<div class='col-md-6' id="138743589064290736253074316678937419126">
 						<h5> 138743589064290736253074316678937419126 <small>
 						Lines of code: <span class="lineCount">268</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">10</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -938,7 +1126,7 @@
 					<div class='col-md-6' id="139240252068482636095747466846388932451">
 						<h5> 139240252068482636095747466846388932451 <small>
 						Lines of code: <span class="lineCount">286</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">7</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1022,7 +1210,7 @@
 					<div class='col-md-6' id="140634406822191026439046256251458760639">
 						<h5> 140634406822191026439046256251458760639 <small>
 						Lines of code: <span class="lineCount">566</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">2</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1150,7 +1338,7 @@
 					<div class='col-md-6' id="153429417999491356169245796517775022394">
 						<h5> 153429417999491356169245796517775022394 <small>
 						Lines of code: <span class="lineCount">370</span> 
-						Comment lines: <span class="commentCount">33</span> </small> </h5>
+						Comment lines: <span class="commentCount">133</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -1262,7 +1450,7 @@
 					<div class='col-md-6' id="161811917717019222016457383612862259306">
 						<h5> 161811917717019222016457383612862259306 <small>
 						Lines of code: <span class="lineCount">298</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">19</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1314,7 +1502,7 @@
 					<div class='col-md-6' id="165014089986482654334828109698339295645">
 						<h5> 165014089986482654334828109698339295645 <small>
 						Lines of code: <span class="lineCount">404</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">22</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1446,7 +1634,7 @@
 					<div class='col-md-6' id="1693438724103618227739458837387922114">
 						<h5> 1693438724103618227739458837387922114 <small>
 						Lines of code: <span class="lineCount">302</span> 
-						Comment lines: <span class="commentCount">12</span> </small> </h5>
+						Comment lines: <span class="commentCount">19</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1494,7 +1682,7 @@
 					<div class='col-md-6' id="174865385131360866590171024609069408136">
 						<h5> 174865385131360866590171024609069408136 <small>
 						Lines of code: <span class="lineCount">279</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">17</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1682,7 +1870,7 @@
 					<div class='col-md-6' id="182259164445135024169118298664798784784">
 						<h5> 182259164445135024169118298664798784784 <small>
 						Lines of code: <span class="lineCount">271</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">10</span> </small> </h5>
 
 						
 							<span class="studentchecks.modifier.ModifierOrderCheck">
@@ -1738,7 +1926,7 @@
 					<div class='col-md-6' id="183255837782595724279125506232323234500">
 						<h5> 183255837782595724279125506232323234500 <small>
 						Lines of code: <span class="lineCount">373</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">80</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -1790,7 +1978,7 @@
 					<div class='col-md-6' id="18934389655258935430754844946502199094">
 						<h5> 18934389655258935430754844946502199094 <small>
 						Lines of code: <span class="lineCount">292</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">5</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1838,7 +2026,7 @@
 					<div class='col-md-6' id="192233325800085776787726823026482128916">
 						<h5> 192233325800085776787726823026482128916 <small>
 						Lines of code: <span class="lineCount">364</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">15</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.NoWhitespaceBeforeCheck">
@@ -1890,7 +2078,7 @@
 					<div class='col-md-6' id="204780525769350452400773952555245721466">
 						<h5> 204780525769350452400773952555245721466 <small>
 						Lines of code: <span class="lineCount">370</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">16</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -1950,7 +2138,7 @@
 					<div class='col-md-6' id="211299431597285844345924155740235694417">
 						<h5> 211299431597285844345924155740235694417 <small>
 						Lines of code: <span class="lineCount">277</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">13</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2010,7 +2198,7 @@
 					<div class='col-md-6' id="214395129984698395089548627623728290335">
 						<h5> 214395129984698395089548627623728290335 <small>
 						Lines of code: <span class="lineCount">367</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">1</span> </small> </h5>
 
 						
 							<span class="studentchecks.coding.InnerAssignmentCheck">
@@ -2114,7 +2302,7 @@
 					<div class='col-md-6' id="224854767709433792116299307229782174193">
 						<h5> 224854767709433792116299307229782174193 <small>
 						Lines of code: <span class="lineCount">317</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">29</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2194,7 +2382,7 @@
 					<div class='col-md-6' id="225976148232480405373022173647659911536">
 						<h5> 225976148232480405373022173647659911536 <small>
 						Lines of code: <span class="lineCount">324</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">7</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2326,7 +2514,7 @@
 					<div class='col-md-6' id="232834228607205084672603009289648301166">
 						<h5> 232834228607205084672603009289648301166 <small>
 						Lines of code: <span class="lineCount">366</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">14</span> </small> </h5>
 
 						
 							<span class="studentchecks.imports.AvoidStarImportCheck">
@@ -2362,7 +2550,7 @@
 					<div class='col-md-6' id="243366743359848203981596423240193092464">
 						<h5> 243366743359848203981596423240193092464 <small>
 						Lines of code: <span class="lineCount">303</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">43</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -2414,7 +2602,7 @@
 					<div class='col-md-6' id="248628247587627388282822682936262751507">
 						<h5> 248628247587627388282822682936262751507 <small>
 						Lines of code: <span class="lineCount">428</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">7</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2582,7 +2770,7 @@
 					<div class='col-md-6' id="254559676086904775175427832912918082210">
 						<h5> 254559676086904775175427832912918082210 <small>
 						Lines of code: <span class="lineCount">379</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">33</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2642,7 +2830,7 @@
 					<div class='col-md-6' id="258125235966225891407845592379155737664">
 						<h5> 258125235966225891407845592379155737664 <small>
 						Lines of code: <span class="lineCount">450</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">6</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2734,7 +2922,7 @@
 					<div class='col-md-6' id="268992554556533684168205001235822097769">
 						<h5> 268992554556533684168205001235822097769 <small>
 						Lines of code: <span class="lineCount">293</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">5</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2790,7 +2978,7 @@
 					<div class='col-md-6' id="271801673958390242956058413378356709184">
 						<h5> 271801673958390242956058413378356709184 <small>
 						Lines of code: <span class="lineCount">454</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">13</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.NoWhitespaceBeforeCheck">
@@ -2862,7 +3050,7 @@
 					<div class='col-md-6' id="278562349941449187526942011850114498440">
 						<h5> 278562349941449187526942011850114498440 <small>
 						Lines of code: <span class="lineCount">312</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">7</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -2910,7 +3098,7 @@
 					<div class='col-md-6' id="283287892187865789296718921870659691863">
 						<h5> 283287892187865789296718921870659691863 <small>
 						Lines of code: <span class="lineCount">417</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">27</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -2962,7 +3150,7 @@
 					<div class='col-md-6' id="285560971789306611612673687401924995669">
 						<h5> 285560971789306611612673687401924995669 <small>
 						Lines of code: <span class="lineCount">363</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">9</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.NoWhitespaceBeforeCheck">
@@ -3090,7 +3278,7 @@
 					<div class='col-md-6' id="292218972282185275550554068536795065679">
 						<h5> 292218972282185275550554068536795065679 <small>
 						Lines of code: <span class="lineCount">404</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">101</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -3138,7 +3326,7 @@
 					<div class='col-md-6' id="299238454167738911638390153091390147516">
 						<h5> 299238454167738911638390153091390147516 <small>
 						Lines of code: <span class="lineCount">304</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">10</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -3190,7 +3378,7 @@
 					<div class='col-md-6' id="299475362372876589616952403657991649907">
 						<h5> 299475362372876589616952403657991649907 <small>
 						Lines of code: <span class="lineCount">305</span> 
-						Comment lines: <span class="commentCount">2</span> </small> </h5>
+						Comment lines: <span class="commentCount">16</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -3238,7 +3426,7 @@
 					<div class='col-md-6' id="301568786224594567469090236764384946523">
 						<h5> 301568786224594567469090236764384946523 <small>
 						Lines of code: <span class="lineCount">391</span> 
-						Comment lines: <span class="commentCount">21</span> </small> </h5>
+						Comment lines: <span class="commentCount">149</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -3298,7 +3486,7 @@
 					<div class='col-md-6' id="30601928856562654020160048024110967866">
 						<h5> 30601928856562654020160048024110967866 <small>
 						Lines of code: <span class="lineCount">252</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">128</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -3374,7 +3562,7 @@
 					<div class='col-md-6' id="309299162962900692439016667310315133146">
 						<h5> 309299162962900692439016667310315133146 <small>
 						Lines of code: <span class="lineCount">306</span> 
-						Comment lines: <span class="commentCount">10</span> </small> </h5>
+						Comment lines: <span class="commentCount">45</span> </small> </h5>
 
 						
 							<span class="studentchecks.naming.MethodNameCheck">
@@ -3434,7 +3622,7 @@
 					<div class='col-md-6' id="316468417469825977438334935420001579607">
 						<h5> 316468417469825977438334935420001579607 <small>
 						Lines of code: <span class="lineCount">369</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">40</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.GenericWhitespaceCheck">
@@ -3498,7 +3686,7 @@
 					<div class='col-md-6' id="318854599671978986652330040297084606656">
 						<h5> 318854599671978986652330040297084606656 <small>
 						Lines of code: <span class="lineCount">473</span> 
-						Comment lines: <span class="commentCount">2</span> </small> </h5>
+						Comment lines: <span class="commentCount">12</span> </small> </h5>
 
 						
 							<span class="studentchecks.imports.AvoidStarImportCheck">
@@ -3554,7 +3742,7 @@
 					<div class='col-md-6' id="326003544420444845709386527698761724755">
 						<h5> 326003544420444845709386527698761724755 <small>
 						Lines of code: <span class="lineCount">283</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">11</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -3662,7 +3850,7 @@
 					<div class='col-md-6' id="4773535873175519780903468925139618073">
 						<h5> 4773535873175519780903468925139618073 <small>
 						Lines of code: <span class="lineCount">332</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">22</span> </small> </h5>
 
 						
 							<span class="studentchecks.blocks.NeedBracesCheck">
@@ -3714,7 +3902,7 @@
 					<div class='col-md-6' id="63316183522793933478490390702611262311">
 						<h5> 63316183522793933478490390702611262311 <small>
 						Lines of code: <span class="lineCount">347</span> 
-						Comment lines: <span class="commentCount">0</span> </small> </h5>
+						Comment lines: <span class="commentCount">22</span> </small> </h5>
 
 						
 							<span class="studentchecks.whitespace.NoWhitespaceBeforeCheck">
@@ -3794,7 +3982,7 @@
 					<div class='col-md-6' id="7332505907347311728386407198181017455">
 						<h5> 7332505907347311728386407198181017455 <small>
 						Lines of code: <span class="lineCount">295</span> 
-						Comment lines: <span class="commentCount">25</span> </small> </h5>
+						Comment lines: <span class="commentCount">49</span> </small> </h5>
 
 						
 							<span class="studentchecks.naming.LocalVariableNameCheck">
@@ -3927,6 +4115,14 @@
 			</div>
 
 		</div>
+		<script>
+			$(document).ready(function() 
+			    { 
+			        $("#myTable").tablesorter(); 
+			    } 
+			); 
+		</script>
+		
 	</body>
 </html>
 
