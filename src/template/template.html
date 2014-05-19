@@ -1,192 +1,110 @@
 <!doctype html>
 <html lang="sv">
 <head>
-	<style type="text/css">
-
-
-	/*
-	Table Style - This is what you want
-	------------------------------------------------------------------ */
-	table a:link {
-		color: #666;
-		font-weight: bold;
-		text-decoration:none;
-	}
-	table a:visited {
-		color: #999999;
-		font-weight:bold;
-		text-decoration:none;
-	}
-	table a:active,
-	table a:hover {
-		color: #bd5a35;
-		text-decoration:underline;
-	}
-	table {
-		font-family:Arial, Helvetica, sans-serif;
-		color:#666;
-		font-size:12px;
-		text-shadow: 1px 1px 0px #fff;
-		background:#eaebec;
-		margin:20px;
-		border:#ccc 1px solid;
-
-		-moz-border-radius:3px;
-		-webkit-border-radius:3px;
-		border-radius:3px;
-
-		-moz-box-shadow: 0 1px 2px #d1d1d1;
-		-webkit-box-shadow: 0 1px 2px #d1d1d1;
-		box-shadow: 0 1px 2px #d1d1d1;
-	}
-	table th {
-		padding:21px 25px 22px 25px;
-		border-top:1px solid #fafafa;
-		border-bottom:1px solid #e0e0e0;
-
-		background: #ededed;
-		background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-		background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
-	}
-	table th:first-child{
-		text-align: left;
-		padding-left:20px;
-	}
-	table tr:first-child th:first-child{
-		-moz-border-radius-topleft:3px;
-		-webkit-border-top-left-radius:3px;
-		border-top-left-radius:3px;
-	}
-	table tr:first-child th:last-child{
-		-moz-border-radius-topright:3px;
-		-webkit-border-top-right-radius:3px;
-		border-top-right-radius:3px;
-	}
-	table tr{
-		text-align: center;
-		padding-left:20px;
-	}
-	table tr td:first-child{
-		text-align: left;
-		padding-left:20px;
-		border-left: 0;
-	}
-	table tr td {
-		padding:18px;
-		border-top: 1px solid #ffffff;
-		border-bottom:1px solid #e0e0e0;
-		border-left: 1px solid #e0e0e0;
-		
-		background: #fafafa;
-		background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
-		background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
-	}
-	table tr.even td{
-		background: #f6f6f6;
-		background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
-		background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
-	}
-	table tr:last-child td{
-		border-bottom:0;
-	}
-	table tr:last-child td:first-child{
-		-moz-border-radius-bottomleft:3px;
-		-webkit-border-bottom-left-radius:3px;
-		border-bottom-left-radius:3px;
-	}
-	table tr:last-child td:last-child{
-		-moz-border-radius-bottomright:3px;
-		-webkit-border-bottom-right-radius:3px;
-		border-bottom-right-radius:3px;
-	}
-	table tr:hover td{
-		background: #f2f2f2;
-		background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-		background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
-	}
-
-	</style>
+	
 	<meta charset='UTF-8'>
-	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script> 
+	 
 	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
 	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'>
-	<title>Resultat</title>
+	<link rel="stylesheet" href="../template/style.css"></link>
+	<title>Results</title>
 </head>
 <body>
 
-	<div class='container'>
-
-		<h1 class='page-header'>Resultat</h1>
-			
-			<p>
-				<small> Antal studenter: <span id="studentCount">$count$</span></small>
-			</p>
-			
-			<p>
-				<small> Medelvärde för antal kommentarer per elev: <span id="commentAverage">$averageComments$</span></small>
-			</p>
-			<p>
-				<small> Medelvärde för rader kod per elev: <span id="rowAverage">$averageRows$</span> </small>
-			</p>
+	<div class='container well'>
+		<div class="row">
+			<div class="col-md-12">	
+					<h1 class='page-header'>Results</h1>
+					
+					<p>
+						 Number of students: <span id="studentCount">$count$</span>                                                                                           
+					</p>
+					
+					<p>
+						 Average comments/student: <span id="commentAverage">$averageComments$</span>
+					</p>
+					<p>
+						 Average lines of code/student: <span id="rowAverage">$averageRows$</span> 
+					</p>
+			</div>
+		</div>
 
 			<div class="row">
-				<h2>Errors</h2>
-				<table cellspacing='0' id="myTable" class="tablesorter">
-					<thead>
-					<tr>
-						<th>Error type</th>
-						<th>Deviation</th>
-						<th>Average</th>
-					</tr>
-				</thead>
-					<tbody>
-				$map:{
 				
-					<tr>
-						<td>$error.type$ </td>
+				<div class="col-md-6 col-md-offset-3">
 					
-						<td>$error.avvikelse$ </td>
-						
-						<td>$error.medelvarde$ </td>
-					
+					<table cellspacing='0' border='1' class="tablesorter">
+						<thead>
+						<tr>
+							<th>Error type</th>
+							<th>Deviation</th>
+							<th>Average</th>
+						</tr>
+					</thead>
+						<tbody>
 
-				</tr>
-				}allErrors$
-					</tbody>
-				</table>
+						$map:{
+						
+							<tr>
+								
+								<td>$error.type$</td>
+								<td>$error.avvikelse$</td>
+								<td>$error.medelvarde$</td>
+							
+							</tr>
+						}allErrors$
+						</tbody>
+					</table>
+				</div>
 			</div>
 
 			<div class='row'>
-				
-				<h2>Individuella resultat</h2>
+				<div class="col-md-12">
+					<h1>Individual results</h1>
 
-				$map:{
-					<div class='col-md-6' id="$result.name$">
-						<h5> $result.name$ <small>
-						Lines of code: <span class="lineCount">$result.nrLines$</span> 
-						Comment lines: <span class="commentCount">$result.nrComments$</span> </small> </h5>
+					$map:{
+						<div class='col-md-6 box' id="$result.name$">
+							<h3> $result.name$ <small>
+							Lines of code: <span class="lineCount">$result.nrLines$</span> 
+							Comment lines: <span class="commentCount">$result.nrComments$</span> </small> </h3>
 
-						$map:{
-							<span class="student$error.errorType$">
-								<h6>$error.errorType$: <small> $error.freq$ </small></h6>
-							</span>
-						}result.errors$
-					</div>
-				} resultsPerStudent$ 
+								<table cellspacing='0' border='1' class="tablesorter">
+									<thead>
+									<tr>
+										<th>Error type</th>
+										<th>Frequency</th>
+									</tr>
+								</thead>
+									<tbody>
 
-			</div>
+									$map:{
+									
+										<tr>
+											<span class="student$error.errorType$">
+												<td>$error.errorType$</td>
+												<td>$error.freq$</td>
+											</span>
+										</tr>
+									}result.errors$
+									</tbody>
+								</table>
+							
+							
+						</div>
+					} resultsPerStudent$ 
+
+				</div>
+
+			</div>	
 
 		</div>
-		<script>
-			$(document).ready(function() 
-			    { 
-			        $("#myTable").tablesorter(); 
-			    } 
-			); 
-		</script>
+
+		<!-- Scripts -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../template/jquery.metadata.js"></script> 
+		<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script> 
+		<script src="../template/script.js"></script>
+	
 		
 	</body>
 </html>
