@@ -9,6 +9,7 @@ body{
 	margin-top: 10px;
 }
 
+
 .row{
     overflow: hidden; 
 }
@@ -33,8 +34,9 @@ table.tablesorter {
 	
 }
 table.tablesorter th {
-	text-align: left;
+	text-align: center;
 	padding: 10px;
+	font-size: 8px;
 	background-color: #6E6E6E;
 }
 table.tablesorter td {
