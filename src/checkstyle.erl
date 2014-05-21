@@ -3,14 +3,17 @@
 %All uncommented lines are counted and results are saved to results.html %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -module(checkstyle).
--export([run/2]).
+-export([run/2,save_from_backup/1]).
 
-
+save_from_backup(BackupFile) ->
+  {ok, Binary}  = file:read_file(BackupFile),
+  Backup = binary_to_term(Binary),
+  save:save_to_file(Backup,false).
 
 run(Dir,SaveName) -> 
   {ok, Count, Results,AverageComments,NrLines} = run_per_dir(Dir),
   Stddiv = analyze:get_stddiv(Results,Count),
-  save:save_to_file(Results,Count, Stddiv, NrLines , AverageComments ,SaveName).
+  save:save_to_file({Results,Count, Stddiv, NrLines , AverageComments ,SaveName},true).
 
 run_per_dir(Dir) ->
     {ok,Filenames} = file:list_dir(Dir),

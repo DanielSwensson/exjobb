@@ -13,6 +13,9 @@ build: beams
 test: beams 
 	${ERL} -pa / -s run test
 
+test_backup: beams
+	${ERL} -pa / -s run test_from_backup
+
 oop1: beams
 	${ERL} -pa / -s run oop1
 
@@ -30,7 +33,6 @@ prog22: beams
 
 clean: 
 	rm -rf *.beam *.html *.dump
-
 
 
 beams: ${MODS:%.erl=%.beam}

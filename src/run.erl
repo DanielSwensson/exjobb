@@ -4,6 +4,9 @@
 test() ->
   checkstyle:run("../testcode/","testcodeResults").
 
+test_from_backup() ->
+   checkstyle:save_from_backup("results/Backup_testcodeResults").
+
 oop1() ->
    checkstyle:run("../oop1/","oop1Results").
 

@@ -1,5 +1,5 @@
 -module(save).
--export([save_to_file/6]).
+-export([save_to_file/2]).
 -import(writer,[write/1]).
 -import(writer,[write_from_file/1]).
 
@@ -7,10 +7,14 @@ save_backup(FileName,TupleToSave) ->
   Backup = term_to_binary(TupleToSave),
   file:write_file("results/Backup_" ++ FileName , Backup).
 
-save_to_file(Results,Count,Stddiv,NrLines , AverageComments ,FileName) ->
+save_to_file({Results,Count,Stddiv,NrLines, AverageComments ,FileName},true) ->
+     save_backup(FileName,{Results,Count,Stddiv, NrLines, AverageComments, FileName}),
+     save_to_file({Results,Count,Stddiv,NrLines, AverageComments ,FileName},false);
+
+save_to_file({Results,Count,Stddiv,NrLines, AverageComments ,FileName},false) ->
   file:make_dir("results"),
   writer:run("results/" ++ FileName ++ ".html"),
-  save_backup(FileName,{Results, Count, Stddiv,AverageComments,NrLines}),
+
   Data = [{count, Count}, {averageComments , io_lib:format("~.7f",[AverageComments / Count])}, {averageRows, io_lib:format("~.7f",[NrLines/Count])}],
   {ok, Compiled} = sgte:compile_file("template/template.html"),
 
