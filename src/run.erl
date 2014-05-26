@@ -7,6 +7,9 @@ test() ->
 test_from_backup() ->
    checkstyle:save_from_backup("results/Backup_testcodeResults").
 
+test_summarize() ->
+	summarize:start(["results/Backup_testcodeResults","results/Backup_prog21Results"]).	
+
 oop1() ->
    checkstyle:run("../oop1/","oop1Results").
 

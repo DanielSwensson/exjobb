@@ -1,111 +1,100 @@
 <!doctype html>
 <html lang="sv">
-<head>
-	
-	<meta charset='UTF-8'>
-	 
-	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
-	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="../template/style.css"></link>
-	<title>Results</title>
-</head>
-<body>
-
-	<div class='container well'>
-		<div class="row">
-			<div class="col-md-12">	
+	<head>
+		
+		<meta charset='UTF-8'>
+		
+		<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'/>
+		<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'/>
+		<link rel="stylesheet" href="../template/style.css"></link>
+		<title>Results</title>
+	</head>
+	<body>
+		<div class='container well'>
+			<div class="row">
+				<div class="col-md-12">
 					<h1 class='page-header'>Results</h1>
 					
 					<p>
-						 Number of students: <span id="studentCount">$count$</span>                                                                                           
+					Number of students: <span id="studentCount">$count$</span>
 					</p>
 					
 					<p>
-						 Average lines of comments per lines of code per student: <span id="commentAverage">$averageComments$</span>
+					Average lines of comments per lines of code per student: <span id="commentAverage">$averageComments$</span>
 					</p>
 					<p>
-						 Average lines of code per student: <span id="rowAverage">$averageRows$</span> 
+					Average lines of code per student: <span id="rowAverage">$averageRows$</span>
 					</p>
+				</div>
 			</div>
-		</div>
-
+			
 			<div class="row">
 				
 				<div class="col-md-6 col-md-offset-3">
 					
 					<table cellspacing='0' border='1' class="tablesorter">
 						<thead>
-						<tr>
-							<th>Error type</th>
-							<th> 1&sigma;-Deviation</th>
-							<th>Average occurrence per 100 lines of code</th>
-						</tr>
-					</thead>
-						<tbody>
-
-						$map:{
-						
 							<tr>
-								
-								<td>$error.type$</td>
-								<td>$error.avvikelse$</td>
-								<td>$error.medelvarde$</td>
-							
+								<th>Error type</th>
+								<th> 1&sigma;-Deviation</th>
+								<th>Average occurrence per 100 lines of code</th>
 							</tr>
-						}allErrors$
+						</thead>
+						<tbody>
+							$map:{
+							
+							<tr class="error">
+								
+								<td class="errorType">$error.type$</td>
+								<td class="errorDeviation">$error.avvikelse$</td>
+								<td class="errorAverage">$error.medelvarde$</td>
+								
+							</tr>
+							}allErrors$
 						</tbody>
 					</table>
 				</div>
 			</div>
-
 			<div class='row'>
 				<div class="col-md-12">
 					<h1>Individual results</h1>
-
 					$map:{
-						<div class='col-md-6 box' id="$result.name$">
-							<h3> $result.name$ <small>
-							Lines of code: <span class="lineCount">$result.nrLines$</span> 
-							Comment lines: <span class="commentCount">$result.nrComments$</span> </small> </h3>
-
-								<table cellspacing='0' border='1' class="tablesorter">
-									<thead>
-									<tr>
-										<th>Error type</th>
-										<th>Frequency</th>
-									</tr>
-								</thead>
-									<tbody>
-
-									$map:{
-									
-										<tr>
-											<span class="student$error.errorType$">
-												<td>$error.errorType$</td>
-												<td>$error.freq$</td>
-											</span>
-										</tr>
-									}result.errors$
-									</tbody>
-								</table>
-							
-							
-						</div>
-					} resultsPerStudent$ 
-
+					<div class='col-md-6 box' id="$result.name$">
+						<h3> $result.name$ <small>
+						Lines of code: <span class="lineCount">$result.nrLines$</span>
+						Comment lines: <span class="commentCount">$result.nrComments$</span> </small> </h3>
+						<table cellspacing='0' border='1' class="tablesorter">
+							<thead>
+								<tr>
+									<th>Error type</th>
+									<th>Frequency</th>
+								</tr>
+							</thead>
+							<tbody>
+								$map:{
+								
+								<tr>
+									<span class="student$error.errorType$">
+									<td>$error.errorType$</td>
+									<td>$error.freq$</td>
+									</span>
+								</tr>
+								}result.errors$
+							</tbody>
+						</table>
+						
+						
+					</div>
+					} resultsPerStudent$
 				</div>
-
-			</div>	
-
+			</div>
 		</div>
-
 		<!-- Scripts -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../template/jquery.metadata.js"></script> 
-		<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script> 
+		<script type="text/javascript" src="../template/jquery.metadata.js"></script>
+		<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script>
 		<script src="../template/script.js"></script>
-	
+		
 		
 	</body>
 </html>
-

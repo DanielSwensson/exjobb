@@ -1,14 +1,10 @@
 $(document).ready(function() {
     $(".tablesorter").tablesorter();
-
     adjustBoxHeight();
-
 });
-
 
 function adjustBoxHeight() {
     boxes = $('.box');
-
     var count = 0;
     var max = 0;
     var first = 0;
@@ -25,7 +21,5 @@ function adjustBoxHeight() {
             max = 0;
             count = 0;
         }
-
     });
-
 }

@@ -1,684 +1,665 @@
 <!doctype html>
 <html lang="sv">
-<head>
-	
-	<meta charset='UTF-8'>
-	 
-	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
-	<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="../template/style.css"></link>
-	<title>Results</title>
-</head>
-<body>
-
-	<div class='container well'>
-		<div class="row">
-			<div class="col-md-12">	
+	<head>
+		
+		<meta charset='UTF-8'>
+		
+		<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'/>
+		<link href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css' rel='stylesheet'/>
+		<link rel="stylesheet" href="../template/style.css"></link>
+		<title>Results</title>
+	</head>
+	<body>
+		<div class='container well'>
+			<div class="row">
+				<div class="col-md-12">
 					<h1 class='page-header'>Results</h1>
 					
 					<p>
-						 Number of students: <span id="studentCount">5</span>                                                                                           
+					Number of students: <span id="studentCount">5</span>
 					</p>
 					
 					<p>
-						 Average lines of comments per lines of code per student: <span id="commentAverage">0.0139588</span>
+					Average lines of comments per lines of code per student: <span id="commentAverage">0.0139588</span>
 					</p>
 					<p>
-						 Average lines of code per student: <span id="rowAverage">568.6000000</span> 
+					Average lines of code per student: <span id="rowAverage">568.6000000</span>
 					</p>
+				</div>
 			</div>
-		</div>
-
+			
 			<div class="row">
 				
 				<div class="col-md-6 col-md-offset-3">
 					
 					<table cellspacing='0' border='1' class="tablesorter">
 						<thead>
-						<tr>
-							<th>Error type</th>
-							<th> 1&sigma;-Deviation</th>
-							<th>Average occurrence per 100 lines of code</th>
-						</tr>
-					</thead>
+							<tr>
+								<th>Error type</th>
+								<th> 1&sigma;-Deviation</th>
+								<th>Average occurrence per 100 lines of code</th>
+							</tr>
+						</thead>
 						<tbody>
-
-						
-						
-							<tr>
-								
-								<td>checks.blocks.NeedBracesCheck</td>
-								<td>1.3382900</td>
-								<td>0.6691450</td>
 							
-							</tr>
-						
-						
-							<tr>
-								
-								<td>checks.naming.LocalVariableNameCheck</td>
-								<td>0.4421221</td>
-								<td>0.2316210</td>
 							
-							</tr>
-						
-						
-							<tr>
+							<tr class="error">
 								
-								<td>checks.naming.MethodNameCheck</td>
-								<td>1.8524278</td>
-								<td>1.4709607</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.blocks.NeedBracesCheck</td>
+								<td class="errorDeviation">1.3382900</td>
+								<td class="errorAverage">0.6691450</td>
 								
-								<td>checks.whitespace.MethodParamPadCheck</td>
-								<td>0.2312139</td>
-								<td>0.1156069</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.imports.AvoidStarImportCheck</td>
-								<td>0.2973978</td>
-								<td>0.1486989</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.naming.LocalVariableNameCheck</td>
+								<td class="errorDeviation">0.4421221</td>
+								<td class="errorAverage">0.2316210</td>
 								
-								<td>checks.blocks.RightCurlyCheck</td>
-								<td>1.9020710</td>
-								<td>1.6657290</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.whitespace.WhitespaceAroundCheck</td>
-								<td>53.9783655</td>
-								<td>55.1717922</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.naming.MethodNameCheck</td>
+								<td class="errorDeviation">1.8524278</td>
+								<td class="errorAverage">1.4709607</td>
 								
-								<td>checks.sizes.LineLengthCheck</td>
-								<td>3.1714551</td>
-								<td>2.5768743</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.blocks.LeftCurlyCheck</td>
-								<td>0.2312139</td>
-								<td>0.1156069</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.whitespace.MethodParamPadCheck</td>
+								<td class="errorDeviation">0.2312139</td>
+								<td class="errorAverage">0.1156069</td>
 								
-								<td>checks.naming.ParameterNameCheck</td>
-								<td>0.7434944</td>
-								<td>0.3717472</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.whitespace.WhitespaceAfterCheck</td>
-								<td>6.9555725</td>
-								<td>4.0603828</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.imports.AvoidStarImportCheck</td>
+								<td class="errorDeviation">0.2973978</td>
+								<td class="errorAverage">0.1486989</td>
 								
-								<td>checks.coding.HiddenFieldCheck</td>
-								<td>5.7406988</td>
-								<td>3.4132474</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.whitespace.FileTabCharacterCheck</td>
-								<td>5.1051858</td>
-								<td>5.0113659</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.blocks.RightCurlyCheck</td>
+								<td class="errorDeviation">1.9020710</td>
+								<td class="errorAverage">1.6657290</td>
 								
-								<td>checks.coding.MagicNumberCheck</td>
-								<td>2.4078959</td>
-								<td>2.6601220</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.FinalParametersCheck</td>
-								<td>6.7070190</td>
-								<td>8.3881904</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.whitespace.WhitespaceAroundCheck</td>
+								<td class="errorDeviation">53.9783655</td>
+								<td class="errorAverage">55.1717922</td>
 								
-								<td>checks.sizes.FileLengthCheck</td>
-								<td>0.0171453</td>
-								<td>0.0085727</td>
-							
 							</tr>
-						
-						
-							<tr>
+							
+							
+							<tr class="error">
 								
-								<td>checks.NewlineAtEndOfFileCheck</td>
-								<td>5.2678229</td>
-								<td>4.7797449</td>
-							
-							</tr>
-						
-						
-							<tr>
+								<td class="errorType">checks.sizes.LineLengthCheck</td>
+								<td class="errorDeviation">3.1714551</td>
+								<td class="errorAverage">2.5768743</td>
 								
-								<td>checks.naming.TypeNameCheck</td>
-								<td>0.8268659</td>
-								<td>0.6746897</td>
-							
 							</tr>
-						
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.blocks.LeftCurlyCheck</td>
+								<td class="errorDeviation">0.2312139</td>
+								<td class="errorAverage">0.1156069</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.naming.ParameterNameCheck</td>
+								<td class="errorDeviation">0.7434944</td>
+								<td class="errorAverage">0.3717472</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.whitespace.WhitespaceAfterCheck</td>
+								<td class="errorDeviation">6.9555725</td>
+								<td class="errorAverage">4.0603828</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.coding.HiddenFieldCheck</td>
+								<td class="errorDeviation">5.7406988</td>
+								<td class="errorAverage">3.4132474</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.whitespace.FileTabCharacterCheck</td>
+								<td class="errorDeviation">5.1051858</td>
+								<td class="errorAverage">5.0113659</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.coding.MagicNumberCheck</td>
+								<td class="errorDeviation">2.4078959</td>
+								<td class="errorAverage">2.6601220</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.FinalParametersCheck</td>
+								<td class="errorDeviation">6.7070190</td>
+								<td class="errorAverage">8.3881904</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.sizes.FileLengthCheck</td>
+								<td class="errorDeviation">0.0171453</td>
+								<td class="errorAverage">0.0085727</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.NewlineAtEndOfFileCheck</td>
+								<td class="errorDeviation">5.2678229</td>
+								<td class="errorAverage">4.7797449</td>
+								
+							</tr>
+							
+							
+							<tr class="error">
+								
+								<td class="errorType">checks.naming.TypeNameCheck</td>
+								<td class="errorDeviation">0.8268659</td>
+								<td class="errorAverage">0.6746897</td>
+								
+							</tr>
+							
 						</tbody>
 					</table>
 				</div>
 			</div>
-
 			<div class='row'>
 				<div class="col-md-12">
 					<h1>Individual results</h1>
-
 					
-						<div class='col-md-6 box' id="elev">
-							<h3> elev <small>
-							Lines of code: <span class="lineCount">269</span> 
-							Comment lines: <span class="commentCount">11</span> </small> </h3>
-
-								<table cellspacing='0' border='1' class="tablesorter">
-									<thead>
-									<tr>
-										<th>Error type</th>
-										<th>Frequency</th>
-									</tr>
-								</thead>
-									<tbody>
-
-									
-									
-										<tr>
-											<span class="studentchecks.blocks.NeedBracesCheck">
-												<td>checks.blocks.NeedBracesCheck</td>
-												<td>9</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.naming.LocalVariableNameCheck">
-												<td>checks.naming.LocalVariableNameCheck</td>
-												<td>3</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.naming.MethodNameCheck">
-												<td>checks.naming.MethodNameCheck</td>
-												<td>5</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.imports.AvoidStarImportCheck">
-												<td>checks.imports.AvoidStarImportCheck</td>
-												<td>2</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.blocks.RightCurlyCheck">
-												<td>checks.blocks.RightCurlyCheck</td>
-												<td>4</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAroundCheck">
-												<td>checks.whitespace.WhitespaceAroundCheck</td>
-												<td>123</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.sizes.LineLengthCheck">
-												<td>checks.sizes.LineLengthCheck</td>
-												<td>16</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.naming.ParameterNameCheck">
-												<td>checks.naming.ParameterNameCheck</td>
-												<td>5</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAfterCheck">
-												<td>checks.whitespace.WhitespaceAfterCheck</td>
-												<td>2</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.FileTabCharacterCheck">
-												<td>checks.whitespace.FileTabCharacterCheck</td>
-												<td>5</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.coding.MagicNumberCheck">
-												<td>checks.coding.MagicNumberCheck</td>
-												<td>7</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.FinalParametersCheck">
-												<td>checks.FinalParametersCheck</td>
-												<td>15</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.NewlineAtEndOfFileCheck">
-												<td>checks.NewlineAtEndOfFileCheck</td>
-												<td>2</td>
-											</span>
-										</tr>
-									
-									</tbody>
-								</table>
-							
-							
-						</div>
+					<div class='col-md-6 box' id="elev">
+						<h3> elev <small>
+						Lines of code: <span class="lineCount">269</span>
+						Comment lines: <span class="commentCount">11</span> </small> </h3>
+						<table cellspacing='0' border='1' class="tablesorter">
+							<thead>
+								<tr>
+									<th>Error type</th>
+									<th>Frequency</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								
+								<tr>
+									<span class="studentchecks.blocks.NeedBracesCheck">
+									<td>checks.blocks.NeedBracesCheck</td>
+									<td>9</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.LocalVariableNameCheck">
+									<td>checks.naming.LocalVariableNameCheck</td>
+									<td>3</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.MethodNameCheck">
+									<td>checks.naming.MethodNameCheck</td>
+									<td>5</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.imports.AvoidStarImportCheck">
+									<td>checks.imports.AvoidStarImportCheck</td>
+									<td>2</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.blocks.RightCurlyCheck">
+									<td>checks.blocks.RightCurlyCheck</td>
+									<td>4</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAroundCheck">
+									<td>checks.whitespace.WhitespaceAroundCheck</td>
+									<td>123</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.sizes.LineLengthCheck">
+									<td>checks.sizes.LineLengthCheck</td>
+									<td>16</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.ParameterNameCheck">
+									<td>checks.naming.ParameterNameCheck</td>
+									<td>5</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAfterCheck">
+									<td>checks.whitespace.WhitespaceAfterCheck</td>
+									<td>2</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.FileTabCharacterCheck">
+									<td>checks.whitespace.FileTabCharacterCheck</td>
+									<td>5</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.coding.MagicNumberCheck">
+									<td>checks.coding.MagicNumberCheck</td>
+									<td>7</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.FinalParametersCheck">
+									<td>checks.FinalParametersCheck</td>
+									<td>15</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.NewlineAtEndOfFileCheck">
+									<td>checks.NewlineAtEndOfFileCheck</td>
+									<td>2</td>
+									</span>
+								</tr>
+								
+							</tbody>
+						</table>
+						
+						
+					</div>
 					
-						<div class='col-md-6 box' id="elev3">
-							<h3> elev3 <small>
-							Lines of code: <span class="lineCount">61</span> 
-							Comment lines: <span class="commentCount">0</span> </small> </h3>
-
-								<table cellspacing='0' border='1' class="tablesorter">
-									<thead>
-									<tr>
-										<th>Error type</th>
-										<th>Frequency</th>
-									</tr>
-								</thead>
-									<tbody>
-
-									
-									
-										<tr>
-											<span class="studentchecks.naming.MethodNameCheck">
-												<td>checks.naming.MethodNameCheck</td>
-												<td>3</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.blocks.RightCurlyCheck">
-												<td>checks.blocks.RightCurlyCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAroundCheck">
-												<td>checks.whitespace.WhitespaceAroundCheck</td>
-												<td>55</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAfterCheck">
-												<td>checks.whitespace.WhitespaceAfterCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.coding.HiddenFieldCheck">
-												<td>checks.coding.HiddenFieldCheck</td>
-												<td>9</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.FileTabCharacterCheck">
-												<td>checks.whitespace.FileTabCharacterCheck</td>
-												<td>4</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.coding.MagicNumberCheck">
-												<td>checks.coding.MagicNumberCheck</td>
-												<td>3</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.FinalParametersCheck">
-												<td>checks.FinalParametersCheck</td>
-												<td>11</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.naming.TypeNameCheck">
-												<td>checks.naming.TypeNameCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.NewlineAtEndOfFileCheck">
-												<td>checks.NewlineAtEndOfFileCheck</td>
-												<td>4</td>
-											</span>
-										</tr>
-									
-									</tbody>
-								</table>
-							
-							
-						</div>
+					<div class='col-md-6 box' id="elev3">
+						<h3> elev3 <small>
+						Lines of code: <span class="lineCount">61</span>
+						Comment lines: <span class="commentCount">0</span> </small> </h3>
+						<table cellspacing='0' border='1' class="tablesorter">
+							<thead>
+								<tr>
+									<th>Error type</th>
+									<th>Frequency</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.MethodNameCheck">
+									<td>checks.naming.MethodNameCheck</td>
+									<td>3</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.blocks.RightCurlyCheck">
+									<td>checks.blocks.RightCurlyCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAroundCheck">
+									<td>checks.whitespace.WhitespaceAroundCheck</td>
+									<td>55</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAfterCheck">
+									<td>checks.whitespace.WhitespaceAfterCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.coding.HiddenFieldCheck">
+									<td>checks.coding.HiddenFieldCheck</td>
+									<td>9</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.FileTabCharacterCheck">
+									<td>checks.whitespace.FileTabCharacterCheck</td>
+									<td>4</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.coding.MagicNumberCheck">
+									<td>checks.coding.MagicNumberCheck</td>
+									<td>3</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.FinalParametersCheck">
+									<td>checks.FinalParametersCheck</td>
+									<td>11</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.TypeNameCheck">
+									<td>checks.naming.TypeNameCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.NewlineAtEndOfFileCheck">
+									<td>checks.NewlineAtEndOfFileCheck</td>
+									<td>4</td>
+									</span>
+								</tr>
+								
+							</tbody>
+						</table>
+						
+						
+					</div>
 					
-						<div class='col-md-6 box' id="elev4">
-							<h3> elev4 <small>
-							Lines of code: <span class="lineCount">173</span> 
-							Comment lines: <span class="commentCount">5</span> </small> </h3>
-
-								<table cellspacing='0' border='1' class="tablesorter">
-									<thead>
-									<tr>
-										<th>Error type</th>
-										<th>Frequency</th>
-									</tr>
-								</thead>
-									<tbody>
-
-									
-									
-										<tr>
-											<span class="studentchecks.naming.MethodNameCheck">
-												<td>checks.naming.MethodNameCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.MethodParamPadCheck">
-												<td>checks.whitespace.MethodParamPadCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.blocks.RightCurlyCheck">
-												<td>checks.blocks.RightCurlyCheck</td>
-												<td>9</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAroundCheck">
-												<td>checks.whitespace.WhitespaceAroundCheck</td>
-												<td>242</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.sizes.LineLengthCheck">
-												<td>checks.sizes.LineLengthCheck</td>
-												<td>12</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.blocks.LeftCurlyCheck">
-												<td>checks.blocks.LeftCurlyCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAfterCheck">
-												<td>checks.whitespace.WhitespaceAfterCheck</td>
-												<td>31</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.coding.HiddenFieldCheck">
-												<td>checks.coding.HiddenFieldCheck</td>
-												<td>4</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.FileTabCharacterCheck">
-												<td>checks.whitespace.FileTabCharacterCheck</td>
-												<td>4</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.coding.MagicNumberCheck">
-												<td>checks.coding.MagicNumberCheck</td>
-												<td>10</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.FinalParametersCheck">
-												<td>checks.FinalParametersCheck</td>
-												<td>7</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.naming.TypeNameCheck">
-												<td>checks.naming.TypeNameCheck</td>
-												<td>3</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.NewlineAtEndOfFileCheck">
-												<td>checks.NewlineAtEndOfFileCheck</td>
-												<td>4</td>
-											</span>
-										</tr>
-									
-									</tbody>
-								</table>
-							
-							
-						</div>
+					<div class='col-md-6 box' id="elev4">
+						<h3> elev4 <small>
+						Lines of code: <span class="lineCount">173</span>
+						Comment lines: <span class="commentCount">5</span> </small> </h3>
+						<table cellspacing='0' border='1' class="tablesorter">
+							<thead>
+								<tr>
+									<th>Error type</th>
+									<th>Frequency</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.MethodNameCheck">
+									<td>checks.naming.MethodNameCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.MethodParamPadCheck">
+									<td>checks.whitespace.MethodParamPadCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.blocks.RightCurlyCheck">
+									<td>checks.blocks.RightCurlyCheck</td>
+									<td>9</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAroundCheck">
+									<td>checks.whitespace.WhitespaceAroundCheck</td>
+									<td>242</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.sizes.LineLengthCheck">
+									<td>checks.sizes.LineLengthCheck</td>
+									<td>12</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.blocks.LeftCurlyCheck">
+									<td>checks.blocks.LeftCurlyCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAfterCheck">
+									<td>checks.whitespace.WhitespaceAfterCheck</td>
+									<td>31</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.coding.HiddenFieldCheck">
+									<td>checks.coding.HiddenFieldCheck</td>
+									<td>4</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.FileTabCharacterCheck">
+									<td>checks.whitespace.FileTabCharacterCheck</td>
+									<td>4</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.coding.MagicNumberCheck">
+									<td>checks.coding.MagicNumberCheck</td>
+									<td>10</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.FinalParametersCheck">
+									<td>checks.FinalParametersCheck</td>
+									<td>7</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.TypeNameCheck">
+									<td>checks.naming.TypeNameCheck</td>
+									<td>3</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.NewlineAtEndOfFileCheck">
+									<td>checks.NewlineAtEndOfFileCheck</td>
+									<td>4</td>
+									</span>
+								</tr>
+								
+							</tbody>
+						</table>
+						
+						
+					</div>
 					
-						<div class='col-md-6 box' id="elev5">
-							<h3> elev5 <small>
-							Lines of code: <span class="lineCount">2333</span> 
-							Comment lines: <span class="commentCount">0</span> </small> </h3>
-
-								<table cellspacing='0' border='1' class="tablesorter">
-									<thead>
-									<tr>
-										<th>Error type</th>
-										<th>Frequency</th>
-									</tr>
-								</thead>
-									<tbody>
-
-									
-									
-										<tr>
-											<span class="studentchecks.naming.LocalVariableNameCheck">
-												<td>checks.naming.LocalVariableNameCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.WhitespaceAroundCheck">
-												<td>checks.whitespace.WhitespaceAroundCheck</td>
-												<td>2</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.FileTabCharacterCheck">
-												<td>checks.whitespace.FileTabCharacterCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.sizes.FileLengthCheck">
-												<td>checks.sizes.FileLengthCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									</tbody>
-								</table>
-							
-							
-						</div>
+					<div class='col-md-6 box' id="elev5">
+						<h3> elev5 <small>
+						Lines of code: <span class="lineCount">2333</span>
+						Comment lines: <span class="commentCount">0</span> </small> </h3>
+						<table cellspacing='0' border='1' class="tablesorter">
+							<thead>
+								<tr>
+									<th>Error type</th>
+									<th>Frequency</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								
+								<tr>
+									<span class="studentchecks.naming.LocalVariableNameCheck">
+									<td>checks.naming.LocalVariableNameCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.WhitespaceAroundCheck">
+									<td>checks.whitespace.WhitespaceAroundCheck</td>
+									<td>2</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.FileTabCharacterCheck">
+									<td>checks.whitespace.FileTabCharacterCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.sizes.FileLengthCheck">
+									<td>checks.sizes.FileLengthCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+							</tbody>
+						</table>
+						
+						
+					</div>
 					
-						<div class='col-md-6 box' id="package">
-							<h3> package <small>
-							Lines of code: <span class="lineCount">7</span> 
-							Comment lines: <span class="commentCount">0</span> </small> </h3>
-
-								<table cellspacing='0' border='1' class="tablesorter">
-									<thead>
-									<tr>
-										<th>Error type</th>
-										<th>Frequency</th>
-									</tr>
-								</thead>
-									<tbody>
-
-									
-									
-										<tr>
-											<span class="studentchecks.whitespace.FileTabCharacterCheck">
-												<td>checks.whitespace.FileTabCharacterCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.FinalParametersCheck">
-												<td>checks.FinalParametersCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									
-										<tr>
-											<span class="studentchecks.NewlineAtEndOfFileCheck">
-												<td>checks.NewlineAtEndOfFileCheck</td>
-												<td>1</td>
-											</span>
-										</tr>
-									
-									</tbody>
-								</table>
-							
-							
-						</div>
-					 
-
+					<div class='col-md-6 box' id="package">
+						<h3> package <small>
+						Lines of code: <span class="lineCount">7</span>
+						Comment lines: <span class="commentCount">0</span> </small> </h3>
+						<table cellspacing='0' border='1' class="tablesorter">
+							<thead>
+								<tr>
+									<th>Error type</th>
+									<th>Frequency</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								
+								<tr>
+									<span class="studentchecks.whitespace.FileTabCharacterCheck">
+									<td>checks.whitespace.FileTabCharacterCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.FinalParametersCheck">
+									<td>checks.FinalParametersCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+								
+								<tr>
+									<span class="studentchecks.NewlineAtEndOfFileCheck">
+									<td>checks.NewlineAtEndOfFileCheck</td>
+									<td>1</td>
+									</span>
+								</tr>
+								
+							</tbody>
+						</table>
+						
+						
+					</div>
+					
 				</div>
-
-			</div>	
-
+			</div>
 		</div>
-
 		<!-- Scripts -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script type="text/javascript" src="../template/jquery.metadata.js"></script> 
-		<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script> 
+		<script type="text/javascript" src="../template/jquery.metadata.js"></script>
+		<script type="text/javascript" src="../template/jquery.tablesorter.min.js"></script>
 		<script src="../template/script.js"></script>
-	
+		
 		
 	</body>
 </html>
-
