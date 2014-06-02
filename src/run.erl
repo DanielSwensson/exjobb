@@ -16,6 +16,9 @@ oop1() ->
 oop2() ->
    checkstyle:run("../oop2/","oop2Results").
 
+oop22012() ->
+	checkstyle:run("../oop2-2012/", "oop22012Results").
+
 alda() ->
    checkstyle:run("../alda/","aldaResults").
 

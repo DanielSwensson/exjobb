@@ -19,6 +19,9 @@ test_backup: beams
 test_summarize: beams
 	${ERL} -pa / -s run test_summarize
 
+oop2-2012: beams 
+	${ERL} -pa / -s run oop22012
+
 oop1: beams
 	${ERL} -pa / -s run oop1
 
