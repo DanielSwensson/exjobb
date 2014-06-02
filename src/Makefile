@@ -25,6 +25,9 @@ oop1: beams
 oop2: beams
 	${ERL} -pa / -s run oop2
 
+oop2-2012: beams
+	${ERL} -pa / -s run oop22012
+
 alda: beams
 	${ERL} -pa / -s run alda
 
