@@ -7,11 +7,11 @@ match_errors(Res) ->
   Reg = "source=\"com\.puppycrawl\.tools\.checkstyle\.(?<ERR>.+)\"",
 	  case re:run(Res,Reg,[global,{capture,['ERR'],list}]) of 
 	  	{match, Results} -> 
-	  		case lists:member(["TreeWalker"],Results) of  
-  				false ->
+	  		% case lists:member(["TreeWalker"],Results) of  
+  			%	false ->
 	  				Results;
-	  		 	true -> []
-	  		end;
+	  		% 	true -> []
+	  		% end;
 	  	_Other -> []
 	  end.
 	 
